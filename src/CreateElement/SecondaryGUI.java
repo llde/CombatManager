@@ -49,6 +49,11 @@ public class SecondaryGUI {
             return Data[rowIndex][columnIndex];
         }
 
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            return super.getColumnClass(columnIndex);
+        }
+
         public boolean isCellEditable(int row, int col) {
             return false;
         }

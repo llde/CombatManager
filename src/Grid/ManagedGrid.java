@@ -90,15 +90,14 @@ public class ManagedGrid extends JComponent  {
             fireTableCellUpdated(row, col);
         }
     }
- //   private static class GridColumn implements TableColumnModel{}
     public static JTable GetTableSingleton() {
-        JTable table = new JTable(new ManagedGridTable());
+        JTable table = new JTable(new ManagedGridTable(),null,null);
         GridCellRender gridrender  = new GridCellRender();
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  //Disable native autoresize
   //      table.setColumnModel(null);
         for(int index = 0; index < table.getColumnCount(); index++){
             TableColumn colonna = table.getColumnModel().getColumn(index);
-            colonna.setHeaderValue(null);  //Swing di merda!
+   //         colonna.setHeaderValue(null);  //Swing di merda!
             colonna.setResizable(false);
      //       colonna.setMinWidth(40);
      //       colonna.setMaxWidth(40);
@@ -106,6 +105,7 @@ public class ManagedGrid extends JComponent  {
         }
         table.setRowHeight(40);
         table.setRowMargin(0);
+        table.setTableHeader(null);
         gridrender.setOpaque(true);
         table.setDefaultRenderer(Object.class, gridrender);
         table.repaint();
