@@ -12,6 +12,8 @@ import java.awt.*;
  * Created by Lorenzo on 25/04/2015.
  */
 public class SecondaryGUI {
+    private static Object[][] datarow = new Object[0][0];
+    private static Object[]   columnnames = {"Nome"  , "Colore" , "Univoco"};
     static class GridCellRender extends DefaultTableCellRenderer implements TableCellRenderer {
         public GridCellRender(){
             setOpaque(true);
@@ -32,21 +34,22 @@ public class SecondaryGUI {
         }
     }
     static class  SecondaryTable extends AbstractTableModel {
-        private Object[][] Data = new Object[10][10];   // to make variable
+        private Object[][] Data = new Object[4][1];   // to make variable
+        private Object[]    columnNames = {"Nome", "Tipo", "Colore", "Univoco"};
 
         @Override
         public int getRowCount() {
-            return Data.length;
-        }
-
-        @Override
-        public int getColumnCount() {
             return Data[0].length;
         }
 
         @Override
+        public int getColumnCount() {
+            return Data.length;
+        }
+
+        @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            return Data[rowIndex][columnIndex];
+            return Data[columnIndex][rowIndex];
         }
 
         @Override
