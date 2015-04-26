@@ -7,6 +7,8 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Created by Lorenzo on 25/04/2015.
@@ -14,6 +16,27 @@ import java.awt.*;
 public class SecondaryGUI {
     private static Object[][] datarow = new Object[0][0];
     private static Object[]   columnnames = {"Nome"  , "Colore" , "Univoco"};
+
+
+    static class PopClickListener extends MouseAdapter{
+
+        private  void createmenu(MouseEvent e){
+            JPopupMenu popup = new JPopupMenu();
+            popup.add("New");
+            popup.add("Delete");
+            popup.show(e.getComponent(), e.getX(), e.getY());
+            popup.setVisible(true);
+        }
+
+        public void mousePressed(MouseEvent e) {
+            if(e.isPopupTrigger()) createmenu(e);
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            if(e.isPopupTrigger()) createmenu(e);
+        }
+
+    }
     static class GridCellRender extends DefaultTableCellRenderer implements TableCellRenderer {
         public GridCellRender(){
             setOpaque(true);
@@ -68,6 +91,7 @@ public class SecondaryGUI {
     }
     public static JTable   getSecondaryGUI(){
         JTable sec = new JTable(new SecondaryTable());
+        sec.addMouseListener(new PopClickListener());
         return sec;
     }
 }
