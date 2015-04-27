@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,18 +15,38 @@ import java.awt.event.MouseEvent;
  * Created by Lorenzo on 25/04/2015.
  */
 public class SecondaryGUI {
-    private static Object[][] datarow = new Object[0][0];
-    private static Object[]   columnnames = {"Nome"  , "Colore" , "Univoco"};
+    private static void constructGridable(Gridable...argrid){
+        JFrame  builder = new JFrame("Builder");
+        JPanel pan = new JPanel();
+        builder.add(pan);
+        builder.setSize(60,60);
+        builder.repaint();
+        builder.setVisible(true);
 
+        //Construct gridable and add options.
+
+    }
 
     static class PopClickListener extends MouseAdapter{
-
         private  void createmenu(MouseEvent e){
             JPopupMenu popup = new JPopupMenu();
-            popup.add("New");
-            popup.add("Delete");
+            JMenuItem nuovo = new JMenuItem("New");
+            JMenuItem cancella = new JMenuItem("Delete");
+            nuovo.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    constructGridable(new Gridable[0]);
+                }
+            });
+            cancella.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    super.mouseClicked(e);
+                }
+            });
+            popup.add(nuovo);
+            popup.add(cancella);
             popup.show(e.getComponent(), e.getX(), e.getY());
-            popup.setVisible(true);
         }
 
         public void mousePressed(MouseEvent e) {
@@ -37,8 +58,8 @@ public class SecondaryGUI {
         }
 
     }
-    static class GridCellRender extends DefaultTableCellRenderer implements TableCellRenderer {
-        public GridCellRender(){
+    static class ColorRender extends DefaultTableCellRenderer{
+        public ColorRender(){
             setOpaque(true);
         }
 
@@ -56,6 +77,16 @@ public class SecondaryGUI {
             return c;
         }
     }
+
+   /* static  class SecondaryCheckBoxesRender extends DefaultTableCellRenderer{
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component  x =  super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            return x;
+
+        }
+    }*/
     static class  SecondaryTable extends AbstractTableModel {
         private Object[][] Data = new Object[4][1];   // to make variable
         private Object[]    columnNames = {"Nome", "Tipo", "Colore", "Univoco"};
@@ -75,9 +106,18 @@ public class SecondaryGUI {
             return Data[columnIndex][rowIndex];
         }
 
+        public SecondaryTable() {
+            super();
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            return columnNames[column].toString();
+        }
+
         @Override
         public Class<?> getColumnClass(int columnIndex) {
-            return super.getColumnClass(columnIndex);
+            return Data[columnIndex].getClass();
         }
 
         public boolean isCellEditable(int row, int col) {
@@ -89,9 +129,10 @@ public class SecondaryGUI {
             fireTableCellUpdated(row, col);
         }
     }
-    public static JTable   getSecondaryGUI(){
+    public static JTable   getSecondaryGUI(Gridable... argrid){
         JTable sec = new JTable(new SecondaryTable());
         sec.addMouseListener(new PopClickListener());
+        sec.getColumn("Colore").setCellRenderer(new ColorRender());
         return sec;
     }
 }
