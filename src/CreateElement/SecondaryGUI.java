@@ -18,9 +18,18 @@ public class SecondaryGUI {
     private static void constructGridable(){
         JFrame  builder = new JFrame("Builder");
         JPanel pan = new JPanel();
+        JTextField nome = new JTextField("Name");
+        JColorChooser colore = new JColorChooser();
+        JCheckBox univoco = new JCheckBox("Unique?");
+        JButton OK = new JButton("OK");
+        JButton Cancella = new JButton("Abort");
+        pan.add(OK);
+        pan.add(Cancella);
+        pan.add(univoco);
+        pan.add(nome);
+        pan.add(colore);
         builder.add(pan);
-        builder.setSize(60,60);
-        builder.repaint();
+        builder.pack();
         builder.setVisible(true);
 
         //Construct gridable and add options.
