@@ -40,8 +40,10 @@ public class MainGUI  implements Runnable {
         titolo.add(principale);
         selezione.getContentPane().add(selel);
         griglia.getContentPane().add(pan, BorderLayout.CENTER);
-        griglia.setSize(512, 512);
-        selezione.setSize(300,300);
+    //    griglia.setSize(512, 512);
+     //   selezione.setSize(300,300);
+        griglia.pack();
+        selezione.pack();
         griglia.setVisible(true);
         selezione.setVisible(true);
         titolo.setVisible(true);
