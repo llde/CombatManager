@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
  * Created by Lorenzo on 25/04/2015.
  */
 public class SecondaryGUI {
-    private static void constructGridable(Gridable...argrid){
+    private static void constructGridable(){
         JFrame  builder = new JFrame("Builder");
         JPanel pan = new JPanel();
         builder.add(pan);
@@ -35,7 +35,7 @@ public class SecondaryGUI {
             nuovo.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    constructGridable(new Gridable[0]);
+                    constructGridable();
                 }
             });
             cancella.addMouseListener(new MouseAdapter() {
@@ -129,7 +129,7 @@ public class SecondaryGUI {
             fireTableCellUpdated(row, col);
         }
     }
-    public static JTable   getSecondaryGUI(Gridable... argrid){
+    public static JTable   getSecondaryGUI(){
         JTable sec = new JTable(new SecondaryTable());
         sec.addMouseListener(new PopClickListener());
         sec.getColumn("Colore").setCellRenderer(new ColorRender());
