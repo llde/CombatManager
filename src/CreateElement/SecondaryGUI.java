@@ -33,10 +33,16 @@ public class SecondaryGUI {
                 ogg[2] = colore.getColor();
                 ogg[3] = univoco.isSelected();
                 grids = new GriddableCreator(ogg);
-                ((CustomSecondaryRes.SecondaryTable) sec.getModel()).addRow((Flora) grids.get());
+                ((CustomSecondaryRes.SecondaryTable) sec.getModel()).addRow((Flora) grids.get().getClass().cast(grids.get()));
+                builder.setVisible(false);
             }
         });
-
+        Cancella.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                builder.setVisible(false);
+            }
+        });
         pan.add(OK);
         pan.add(type);
         pan.add(Cancella);

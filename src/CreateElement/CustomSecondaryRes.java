@@ -51,7 +51,6 @@ public  class CustomSecondaryRes {
             this.Data[2][this.Data[2].length -1] = obj;
             this.Data[3] = Arrays.copyOf(this.Data[3], this.Data[3].length +1);
             this.Data[3][this.Data[3].length -1] = obj.TerrainType();
-
             this.fireTableRowsInserted(0, this.getRowCount() - 1);
         }
         @Override
