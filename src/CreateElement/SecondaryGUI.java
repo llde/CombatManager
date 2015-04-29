@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 
 /**
  * Created by Lorenzo on 25/04/2015.
+ * This GUI exist for creating new  Object that implement the Gridable interface  and for displaying their property thought the GridderCreator object.
  */
 public class SecondaryGUI {
     private static String[] tipi = {"PG", "NPC", "Object", "Flora", "Fauna"};
@@ -33,7 +34,7 @@ public class SecondaryGUI {
                 ogg[2] = colore.getColor();
                 ogg[3] = univoco.isSelected();
                 grids = new GriddableCreator(ogg);
-                ((CustomSecondaryRes.SecondaryTable) sec.getModel()).addRow((Flora) grids.get().getClass().cast(grids.get()));
+                ((CustomSecondaryRes.SecondaryTable) sec.getModel()).addRow(grids);
                 builder.setVisible(false);
             }
         });
@@ -103,6 +104,9 @@ public class SecondaryGUI {
         sec = new JTable(new CustomSecondaryRes.SecondaryTable());
         sec.addMouseListener(new PopClickListener());
         sec.getColumn("Colore").setCellRenderer(new CustomSecondaryRes.ColorRender());
+        sec.getColumn("Nome").setCellRenderer(new CustomSecondaryRes.NameRender());
+        sec.getColumn("Tipo").setCellRenderer(new CustomSecondaryRes.TypeRender());
+        sec.getColumn("Univoco").setCellRenderer(new CustomSecondaryRes.CheckBoxRender());
         return sec;
     }
 }

@@ -18,20 +18,32 @@ import java.util.stream.Stream;
 public class GriddableCreator {
     private Gridable    Ogg;
     private Flora FloraOgg;
+    private String nome;
+    private boolean univoco;
+    private Color colore;
     private ManageableTypes  Tipo;
 
     public GriddableCreator(Object... inf){
         this.Tipo = ManageableTypes.valueOf(((String) inf[0]).toUpperCase());
-        String nome = (String) inf[1];
-        Color colore = (Color) inf[2];
-        boolean univoco = (Boolean) inf[3];
+        this.nome = (String) inf[1];
+        this.colore = (Color) inf[2];
+        this.univoco = (Boolean) inf[3];
         if(this.Tipo == ManageableTypes.FLORA) {
             this.FloraOgg = new Flora(nome,colore);
             this.Ogg = this.FloraOgg;
         }
-        System.out.print(nome);
     }
+
     public Gridable get(){
         return Ogg;
     }
+
+    public String getName(){ return  this.nome;}
+
+    public ManageableTypes getType(){ return this.Tipo;}
+
+    public Color getColor(){ return this.colore;}
+
+    public Boolean getUnique(){ return this.univoco;}
+
 }
