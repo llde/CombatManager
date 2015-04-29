@@ -1,22 +1,44 @@
 package CreateElement;
 
+import Ambience.Flora;
+import Daemon.GriddableCreator;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by Lorenzo on 25/04/2015.
  */
 public class SecondaryGUI {
+    private static String[] tipi = {"PG", "NPC", "Object", "Flora", "Fauna"};
+    private static GriddableCreator grids;
+    private  static JTable sec;
     private static void constructGridable(){
         JFrame  builder = new JFrame("Builder");
         JPanel pan = new JPanel();
         JTextField nome = new JTextField("Name");
         JColorChooser colore = new JColorChooser();
         JCheckBox univoco = new JCheckBox("Unique?");
+        JComboBox<? extends String> type = new JComboBox<String>(tipi);
         JButton OK = new JButton("OK");
         JButton Cancella = new JButton("Abort");
+        OK.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Object[] ogg = new Object[4];
+                ogg[0] = type.getSelectedItem();
+                ogg[1] = nome.getText();
+                ogg[2] = colore.getColor();
+                ogg[3] = univoco.isSelected();
+                grids = new GriddableCreator(ogg);
+                ((CustomSecondaryRes.SecondaryTable) sec.getModel()).addRow((Flora) grids.get());
+            }
+        });
+
         pan.add(OK);
+        pan.add(type);
         pan.add(Cancella);
         pan.add(univoco);
         pan.add(nome);
@@ -72,7 +94,7 @@ public class SecondaryGUI {
     }*/
 
     public static JTable   getSecondaryGUI(){
-        JTable sec = new JTable(new CustomSecondaryRes.SecondaryTable());
+        sec = new JTable(new CustomSecondaryRes.SecondaryTable());
         sec.addMouseListener(new PopClickListener());
         sec.getColumn("Colore").setCellRenderer(new CustomSecondaryRes.ColorRender());
         return sec;

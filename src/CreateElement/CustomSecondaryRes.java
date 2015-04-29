@@ -1,11 +1,14 @@
 package CreateElement;
 
+import Ambience.Ambience;
+import Daemon.GriddableCreator;
 import Gridder.Gridable;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Created by Lorenzo on 27/04/2015.
@@ -35,6 +38,22 @@ public  class CustomSecondaryRes {
         private Object[][] Data = new Object[4][1];   // to make variable
         private Object[]    columnNames = {"Nome", "Tipo", "Colore", "Univoco"};
 
+        public SecondaryTable() {
+            super();
+        }
+
+        public void addRow(Ambience obj){
+            this.Data[0] = Arrays.copyOf(this.Data[0], this.Data[0].length +1);
+            this.Data[0][this.Data[0].length -1] = obj.TerrainType();
+            this.Data[1] = Arrays.copyOf(this.Data[1], this.Data[1].length +1);
+            this.Data[1][this.Data[1].length -1] = obj.TerrainType();
+            this.Data[2] = Arrays.copyOf(this.Data[2], this.Data[2].length +1);
+            this.Data[2][this.Data[2].length -1] = obj;
+            this.Data[3] = Arrays.copyOf(this.Data[3], this.Data[3].length +1);
+            this.Data[3][this.Data[3].length -1] = obj.TerrainType();
+
+            this.fireTableRowsInserted(0, this.getRowCount() - 1);
+        }
         @Override
         public int getRowCount() {
             return Data[0].length;
@@ -48,10 +67,6 @@ public  class CustomSecondaryRes {
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             return Data[columnIndex][rowIndex];
-        }
-
-        public SecondaryTable() {
-            super();
         }
 
         @Override
@@ -69,8 +84,8 @@ public  class CustomSecondaryRes {
         }
 
         public void setValueAt(Object value, int row, int col) {
-            Data[row][col] = value;
-            fireTableCellUpdated(row, col);
+            Data[col][row] = value;
+            fireTableCellUpdated(col, row);
         }
     }
 
