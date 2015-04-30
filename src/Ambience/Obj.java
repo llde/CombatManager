@@ -6,14 +6,14 @@ import java.awt.*;
 /**
  * Created by Lorenzo on 22/04/2015.
  */
-public class Object implements Ambience{
+public class Obj implements Ambience{
     private  String nome;
     private boolean block;
     private Color colore;
 
 
 
-    public Object(String nome, Color  colore){
+    public Obj(String nome, Color  colore){
         this.nome = nome;
         this.colore = colore;
     }

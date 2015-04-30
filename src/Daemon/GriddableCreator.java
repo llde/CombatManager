@@ -1,16 +1,14 @@
 package Daemon;
 
 import Ambience.Flora;
+import Charcacter.Fauna;
+import Ambience.Obj;
+import Charcacter.NPC;
+import Charcacter.PG;
 import Gridder.Gridable;
 import Gridder.ManageableTypes;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 27/04/2015.
@@ -18,7 +16,6 @@ import java.util.stream.Stream;
  */
 public class GriddableCreator {
     private Gridable    Ogg;
-    private Flora FloraOgg;
     private String nome;
     private boolean univoco;
     private Color colore;
@@ -30,8 +27,19 @@ public class GriddableCreator {
         this.colore = (Color) inf[2];
         this.univoco = (Boolean) inf[3];
         if(this.Tipo == ManageableTypes.FLORA) {
-            this.FloraOgg = new Flora(nome,colore);
-            this.Ogg = this.FloraOgg;
+            this.Ogg = new Flora(nome,colore);
+        }
+        if(this.Tipo == ManageableTypes.OBJECT) {
+            this.Ogg = new Obj(nome,colore);
+        }
+        if(this.Tipo == ManageableTypes.FAUNA) {
+            this.Ogg = new Fauna(nome,colore);
+        }
+        if(this.Tipo == ManageableTypes.PG) {
+            this.Ogg = new PG(nome,colore);
+        }
+        if(this.Tipo == ManageableTypes.NPC) {
+            this.Ogg = new NPC(nome,colore);
         }
     }
 

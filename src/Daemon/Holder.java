@@ -8,6 +8,7 @@ import Gridder.Gridable;
 public class Holder {
     private Gridable objectHold;
     private static Holder  hold;
+
     private Holder(Gridable obj){
         this.objectHold = obj;
     }

@@ -6,14 +6,14 @@ import java.awt.*;
 /**
  * Created by Lorenzo on 22/04/2015.
  */
-public class PG implements Character{
+public class Fauna implements Character{
     private  String nome;
     private boolean block;
     private Color colore;
 
 
 
-    public PG(String nome, Color  colore){
+    public Fauna(String nome, Color  colore){
         this.nome = nome;
         this.colore = colore;
     }
