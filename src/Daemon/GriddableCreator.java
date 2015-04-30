@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 27/04/2015.
+ * MiddleEnd Object.
  */
 public class GriddableCreator {
     private Gridable    Ogg;

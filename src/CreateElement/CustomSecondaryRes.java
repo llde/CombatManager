@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 /**
  * Created by Lorenzo on 27/04/2015.
+ * Render and table model resource
  */
 
 public  class CustomSecondaryRes {

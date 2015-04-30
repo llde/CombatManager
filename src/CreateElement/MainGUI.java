@@ -1,7 +1,9 @@
 package CreateElement;
 
 import Ambience.Flora;
+import Daemon.Holder;
 import Grid.ManagedGrid;
+import Gridder.Gridable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +18,6 @@ public class MainGUI  implements Runnable {
         JFrame titolo = new JFrame("D&D combat manager");
         JFrame griglia = new JFrame("Griglia");
         JFrame selezione = new JFrame("Selezione elemento");
-        Flora foresta = new Flora("Foresta", Color.GREEN);
         titolo.setSize(300, 100);
         titolo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JToolBar principale = new JToolBar();
@@ -29,9 +30,10 @@ public class MainGUI  implements Runnable {
         gridtable.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                Gridable gridObj = Holder.GetHolder().getGridable();
                 int row = gridtable.rowAtPoint(e.getPoint());
                 int col = gridtable.columnAtPoint(e.getPoint());
-                gridtable.setValueAt(foresta,row,col);
+                gridtable.setValueAt(gridObj,row,col);
             }
 
         });
