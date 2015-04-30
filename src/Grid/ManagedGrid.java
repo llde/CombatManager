@@ -1,42 +1,7 @@
 package Grid;
 
-import Gridder.Gridable;
-import sun.reflect.misc.ReflectUtil;
-import sun.swing.PrintingStatus;
-import sun.swing.SwingUtilities2;
-
-import javax.accessibility.*;
-import javax.print.PrintService;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.event.*;
-import javax.swing.plaf.TableUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.table.*;
-import javax.swing.text.TableView;
-import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.print.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.text.DateFormat;
-import java.text.MessageFormat;
-import java.text.NumberFormat;
-import java.util.*;
-
-import static sun.swing.SwingUtilities2.Section.LEADING;
-import static sun.swing.SwingUtilities2.Section.MIDDLE;
-import static sun.swing.SwingUtilities2.Section.TRAILING;
+import javax.swing.table.TableColumn;
 
 /**
  * Created by Lorenzo on 22/04/2015.
