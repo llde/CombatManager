@@ -25,7 +25,7 @@ public class MainGUI  implements Runnable {
         principale.add(new JButton("Save"));
         principale.add(new JButton("Export"));
         principale.add(new JButton("New"));
-        JTable selectionelement = SecondaryGUI.getSecondaryGUI();
+        JTable selectionelement = SecondaryGUI.getSecondaryGUI(true);
         JTable gridtable = ManagedGrid.GetTableSingleton();
         gridtable.addMouseListener(new MouseAdapter() {
             @Override

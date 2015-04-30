@@ -90,6 +90,14 @@ public  class CustomSecondaryRes {
         }
 
         public void addRow(GriddableCreator obj){
+            if(this.Data[0][0] == null){
+                this.Data[0][this.Data[0].length -1] = obj;
+                this.Data[1][this.Data[1].length -1] = obj;
+                this.Data[2][this.Data[2].length -1] = obj;
+                this.Data[3][this.Data[3].length -1] = obj;
+                this.fireTableRowsInserted(0, this.getRowCount() - 1);
+                return;
+            }
             this.Data[0] = Arrays.copyOf(this.Data[0], this.Data[0].length +1);
             this.Data[0][this.Data[0].length -1] = obj;
             this.Data[1] = Arrays.copyOf(this.Data[1], this.Data[1].length +1);

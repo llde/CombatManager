@@ -108,18 +108,29 @@ public class SecondaryGUI {
        public void mousePressed(MouseEvent e) {
            int row = sec.getSelectedRow();
            int col = sec.getSelectedColumn();
+           if(sec.getValueAt(row,col)  == null) return;
            Holder hold = Holder.GetHolder(((GriddableCreator)sec.getValueAt(row,col)).get());
            System.out.print("Holder ottenuto");
        }
    }
-    public static JTable   getSecondaryGUI(){
-        sec = new JTable(new CustomSecondaryRes.SecondaryTable());
-        sec.addMouseListener(new PopClickListener());
-        sec.addMouseListener(new ObtainObject());
-        sec.getColumn("Colore").setCellRenderer(new CustomSecondaryRes.ColorRender());
-        sec.getColumn("Nome").setCellRenderer(new CustomSecondaryRes.NameRender());
-        sec.getColumn("Tipo").setCellRenderer(new CustomSecondaryRes.TypeRender());
-        sec.getColumn("Univoco").setCellRenderer(new CustomSecondaryRes.CheckBoxRender());
+    public static JTable   getSecondaryGUI(boolean... newi){
+        if (newi.length > 1) throw new AssertionError("Assertion Failed: Illegal Argument");
+        boolean nuovo;
+        try {
+            nuovo = newi[0];
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            nuovo = false ;
+        }
+        if(nuovo) {
+            sec = new JTable(new CustomSecondaryRes.SecondaryTable());
+            sec.addMouseListener(new PopClickListener());
+            sec.addMouseListener(new ObtainObject());
+            sec.getColumn("Colore").setCellRenderer(new CustomSecondaryRes.ColorRender());
+            sec.getColumn("Nome").setCellRenderer(new CustomSecondaryRes.NameRender());
+            sec.getColumn("Tipo").setCellRenderer(new CustomSecondaryRes.TypeRender());
+            sec.getColumn("Univoco").setCellRenderer(new CustomSecondaryRes.CheckBoxRender());
+        }
         return sec;
     }
 }
