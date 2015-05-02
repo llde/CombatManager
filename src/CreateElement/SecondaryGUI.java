@@ -1,15 +1,11 @@
 package CreateElement;
 
-import Ambience.Flora;
 import Daemon.GriddableCreator;
 import Daemon.Holder;
-import Util.ConfigurationFile;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  * Created by Lorenzo on 25/04/2015.

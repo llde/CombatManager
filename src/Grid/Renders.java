@@ -1,7 +1,6 @@
 package Grid;
 
 import Gridder.Gridable;
-import sun.java2d.pipe.RenderingEngine;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
