@@ -109,16 +109,8 @@ public class SecondaryGUI {
            System.out.print("Holder ottenuto");
        }
    }
-    public static JTable   getSecondaryGUI(boolean... newi){
-        if (newi.length > 1) throw new AssertionError("Assertion Failed: Illegal Argument");
-        boolean nuovo;
-        try {
-            nuovo = newi[0];
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            nuovo = false ;
-        }
-        if(nuovo) {
+    public static JTable   getSecondaryGUI(boolean newi){
+        if(newi) {
             sec = new JTable(new CustomSecondaryRes.SecondaryTable());
             sec.addMouseListener(new PopClickListener());
             sec.addMouseListener(new ObtainObject());

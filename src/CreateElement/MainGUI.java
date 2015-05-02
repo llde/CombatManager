@@ -25,7 +25,7 @@ public class MainGUI  implements Runnable {
         principale.add(new JButton("Export"));
         principale.add(new JButton("New"));
         JTable selectionelement = SecondaryGUI.getSecondaryGUI(true);
-        JTable gridtable = ManagedGrid.GetTableSingleton();
+        JTable gridtable = ManagedGrid.GetTableSingleton(true);
         gridtable.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

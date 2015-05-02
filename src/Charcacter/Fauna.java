@@ -17,6 +17,7 @@ public class Fauna implements Character{
         this.nome = nome;
         this.colore = colore;
     }
+
     @Override
     public Color getColor() {
         return this.colore;
