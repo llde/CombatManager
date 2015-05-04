@@ -19,4 +19,6 @@ public interface Gridable {
 
     void setIcon();
 
+
+    boolean IsUnique();
 }

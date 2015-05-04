@@ -9,13 +9,16 @@ import java.awt.*;
 public class NPC implements Character{
     private  String nome;
     private boolean block;
+    private boolean uniqness;
     private Color colore;
 
 
 
-    public NPC(String nome, Color  colore){
+    public NPC(String nome, Color  colore, boolean uniq){
         this.nome = nome;
         this.colore = colore;
+        this.uniqness = uniq;
+
     }
     @Override
     public Color getColor() {
@@ -35,5 +38,8 @@ public class NPC implements Character{
     public void setIcon() {
 
     }
+    @Override
+    public boolean IsUnique(){return uniqness;}
+
 }
 

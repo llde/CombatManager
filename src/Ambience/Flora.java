@@ -8,14 +8,16 @@ import java.awt.*;
  */
 public class Flora implements  Ambience{
     private  String nome;
-
+    private boolean uniqness;
     private Color   colore;
 
 
 
-    public Flora(String nome, Color  colore){
+    public Flora(String nome, Color  colore, boolean uniq){
         this.nome = nome;
         this.colore = colore;
+        this.uniqness = uniq;
+
     }
 
     @Override
@@ -52,4 +54,7 @@ public class Flora implements  Ambience{
     public void setIcon() {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public boolean IsUnique(){return uniqness;}
 }

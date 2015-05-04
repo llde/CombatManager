@@ -4,6 +4,7 @@
  * Mine first Java GUI program.
  */
 import CreateElement.MainGUI;
+import Util.ConfigurationFile;
 
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+        ConfigurationFile config = ConfigurationFile.GetConfig();
         init();
     }
 }

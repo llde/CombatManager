@@ -9,13 +9,15 @@ import java.awt.*;
 public class Fauna implements Character{
     private  String nome;
     private boolean block;
+    private boolean uniqness;
     private Color colore;
 
 
 
-    public Fauna(String nome, Color  colore){
+    public Fauna(String nome, Color  colore, boolean uniq){
         this.nome = nome;
         this.colore = colore;
+        this.uniqness = uniq;
     }
 
     @Override
@@ -36,4 +38,8 @@ public class Fauna implements Character{
     public void setIcon() {
 
     }
+
+    @Override
+    public boolean IsUnique(){return uniqness;}
+
 }

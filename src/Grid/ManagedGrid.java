@@ -18,7 +18,7 @@ public class ManagedGrid extends JComponent  {
             //      table.setColumnModel(null);
             for (int index = 0; index < table.getColumnCount(); index++) {
                 TableColumn colonna = table.getColumnModel().getColumn(index);
-                //         colonna.setHeaderValue(null);  //Swing di merda!
+                //         coloqnna.setHeaderValue(null);  //Swing di merda!
                 colonna.setResizable(false);
                 //       colonna.setMinWidth(40);
                 //       colonna.setMaxWidth(40);

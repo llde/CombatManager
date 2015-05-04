@@ -27,19 +27,19 @@ public class GriddableCreator {
         this.colore = (Color) inf[2];
         this.univoco = (Boolean) inf[3];
         if(this.Tipo == ManageableTypes.FLORA) {
-            this.Ogg = new Flora(nome,colore);
+            this.Ogg = new Flora(nome,colore,univoco);
         }
         if(this.Tipo == ManageableTypes.OBJECT) {
-            this.Ogg = new Obj(nome,colore);
+            this.Ogg = new Obj(nome,colore,univoco);
         }
         if(this.Tipo == ManageableTypes.FAUNA) {
-            this.Ogg = new Fauna(nome,colore);
+            this.Ogg = new Fauna(nome,colore,univoco);
         }
         if(this.Tipo == ManageableTypes.PG) {
-            this.Ogg = new PG(nome,colore);
+            this.Ogg = new PG(nome,colore,univoco);
         }
         if(this.Tipo == ManageableTypes.NPC) {
-            this.Ogg = new NPC(nome,colore);
+            this.Ogg = new NPC(nome,colore,univoco);
         }
     }
 

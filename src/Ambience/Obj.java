@@ -9,13 +9,16 @@ import java.awt.*;
 public class Obj implements Ambience{
     private  String nome;
     private boolean block;
+    private boolean uniqness;
     private Color colore;
 
 
 
-    public Obj(String nome, Color  colore){
+    public Obj(String nome, Color  colore, boolean uniq){
         this.nome = nome;
         this.colore = colore;
+        this.uniqness = uniq;
+
     }
 
     @Override
@@ -52,4 +55,7 @@ public class Obj implements Ambience{
     public void setIcon() {
         throw new UnsupportedOperationException();
     }
+    @Override
+    public boolean IsUnique(){return uniqness;}
+
 }
