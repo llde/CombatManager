@@ -1,6 +1,7 @@
 package Grid;
 
 import Gridder.Gridable;
+import Util.ConfigurationFile;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -13,7 +14,8 @@ import java.awt.*;
  */
 public class Renders {
     public static class  ManagedGridTable extends AbstractTableModel {
-        private Object[][] Data = new Object[10][10];   // to make variable.
+        private ConfigurationFile config = ConfigurationFile.GetConfig();
+        private Object[][] Data = new Object[config.getNumberGridRow()][config.getNumberGridColumn()];
 
         @Override
         public int getRowCount() {

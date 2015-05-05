@@ -3,6 +3,7 @@ package CreateElement;
 import Daemon.Holder;
 import Grid.ManagedGrid;
 import Gridder.Gridable;
+import Util.ConfigurationFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,7 @@ import java.awt.event.MouseEvent;
  */
 public class MainGUI  implements Runnable {
     public void  run(){
+        ConfigurationFile config = ConfigurationFile.GetConfig();
         JFrame titolo = new JFrame("D&D combat manager");
         JFrame griglia = new JFrame("Griglia");
         JFrame selezione = new JFrame("Selezione elemento");

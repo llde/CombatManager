@@ -11,7 +11,7 @@ import javax.swing.*;
 
 public class Main {
 
-
+//TODO port to JavaFX
     private static void init(){
         SwingUtilities.invokeLater(new MainGUI());
     }

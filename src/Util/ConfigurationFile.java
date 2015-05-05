@@ -6,6 +6,7 @@ import java.awt.*;
 
 /**
  * Created by Lorenzo on 25/04/2015.
+ * TODO save/load ini.
  */
 public class ConfigurationFile {
     private int numberGridRow;

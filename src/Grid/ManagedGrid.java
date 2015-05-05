@@ -1,5 +1,7 @@
 package Grid;
 
+import Util.ConfigurationFile;
+
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 
@@ -10,7 +12,7 @@ import javax.swing.table.TableColumn;
 public class ManagedGrid extends JComponent  {
     private  static JTable table;
     public static JTable GetTableSingleton(boolean newi) {
-
+        ConfigurationFile config = ConfigurationFile.GetConfig();
         if(newi) {
             table = new JTable(new Renders.ManagedGridTable(), null, null);
             Renders.GridCellRender gridrender = new Renders.GridCellRender();
@@ -22,9 +24,9 @@ public class ManagedGrid extends JComponent  {
                 colonna.setResizable(false);
                 //       colonna.setMinWidth(40);
                 //       colonna.setMaxWidth(40);
-                colonna.setPreferredWidth(40);
+                colonna.setPreferredWidth(config.getxLenghtBlock());
             }
-            table.setRowHeight(40);
+            table.setRowHeight(config.getyLenghtBlock());
             table.setRowMargin(0);
             table.setTableHeader(null);
             gridrender.setOpaque(true);
