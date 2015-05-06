@@ -3,6 +3,13 @@ package Util;
 import Gridder.Gridable;
 
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Lorenzo on 25/04/2015.
@@ -23,10 +30,10 @@ public class ConfigurationFile {
     private ConfigurationFile(){  //default
         this.allowResize = true;
         this.allowNullify = true;
-        this.numberGridRow = 10;
-        this.numberGridColumn = 10;
-        this.xLenghtBlock = 40;
-        this.yLenghtBlock = 40;
+        this.numberGridRow = 50;
+        this.numberGridColumn = 50;
+        this.xLenghtBlock = 10;
+        this.yLenghtBlock = 10;
         this.colorDefault = Color.WHITE;
         this.Locale = null;
     }
@@ -102,8 +109,34 @@ public class ConfigurationFile {
         this.allowNullify = allowNullify;
     }
 
-    public static void load(){}
+    public static void load(Path c){}
 
-    public void save(){} //reindirizza al demone
+    public void save(){
+        Map<String, Object > toSave = new HashMap<String, Object>();
+        String nomefile = "CombatManager.ini";
+        java.util.List<String> tt = new ArrayList<>();
+        toSave.put("GridNumberRow" , getNumberGridRow());
+        toSave.put("GridNumberColumn", getNumberGridColumn());
+        toSave.put("Resolution High Block", getyLenghtBlock());
+        toSave.put("Resolution Lenght Block" , getxLenghtBlock());
+        toSave.put("Default Color Background", getColorDefault());
+        toSave.put("Allow Nullify" , isAllowNullify());
+        toSave.put("Allow Resize", isAllowResize());
+        toSave.put("Locale", getLocale());
+        toSave.entrySet().stream().forEach((s) -> tt.add(s.getKey() + " = " + s.getValue()));
+        Path questa = Paths.get(nomefile);
+        try {
+            BufferedWriter file = Files.newBufferedWriter(questa, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+            for(String el : tt){
+                file.write(el);
+                file.newLine();
+            }
+            file.close();
+        }
+        catch(IOException e){
+            System.out.print("Cannot create file, at directory " + questa.toAbsolutePath());
+            e.printStackTrace();
+        }
+    } //reindirizza al demone
 
 }

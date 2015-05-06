@@ -20,6 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         ConfigurationFile config = ConfigurationFile.GetConfig();
+        config.save();
         init();
     }
 }
