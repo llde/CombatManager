@@ -19,8 +19,9 @@ public class Main {
 
 
     public static void main(String[] args) {
+        ConfigurationFile.load("CombatManager.ini");
         ConfigurationFile config = ConfigurationFile.GetConfig();
-        config.save();
+   //     config.save();
         init();
     }
 }

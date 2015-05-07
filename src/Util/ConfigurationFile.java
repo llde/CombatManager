@@ -3,6 +3,7 @@ package Util;
 import Gridder.Gridable;
 
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 25/04/2015.
@@ -30,10 +32,10 @@ public class ConfigurationFile {
     private ConfigurationFile(){  //default
         this.allowResize = true;
         this.allowNullify = true;
-        this.numberGridRow = 50;
-        this.numberGridColumn = 50;
-        this.xLenghtBlock = 10;
-        this.yLenghtBlock = 10;
+        this.numberGridRow = 10;
+        this.numberGridColumn = 10;
+        this.xLenghtBlock = 40;
+        this.yLenghtBlock = 40;
         this.colorDefault = Color.WHITE;
         this.Locale = null;
     }
@@ -109,7 +111,59 @@ public class ConfigurationFile {
         this.allowNullify = allowNullify;
     }
 
-    public static void load(Path c){}
+    public static void load(String ini){
+        Map<String, String>  tl = new HashMap<>();
+        try {
+            BufferedReader file = Files.newBufferedReader(Paths.get(ini), StandardCharsets.UTF_8);
+            Stream<String> x = file.lines();
+            x.forEach((s) -> tl.put(s.split("=")[0], s.split("=")[1]));
+        }
+        catch (IOException e){
+            System.out.print("Cannot load file");
+            e.printStackTrace();
+        }
+        istanza = new ConfigurationFile();
+        for(Map.Entry ewl : tl.entrySet()){
+            try {
+                if (((String)ewl.getKey()).trim().equalsIgnoreCase("GridNumberRow")) {
+                    istanza.setNumberGridRow(Integer.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("GridNumberColumn")) {
+                    istanza.setNumberGridColumn(Integer.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Resolution High Block")) {
+                    istanza.setyLenghtBlock(Integer.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Resolution Length Block")){
+                    istanza.setxLenghtBlock(Integer.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Allow Nullify")) {
+                    istanza.setAllowNullify(Boolean.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Allow Resize")) {
+                    istanza.setAllowResize(Boolean.valueOf(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Locale")){
+                    istanza.setLocale(((String) ewl.getValue()).trim());
+                    continue;
+                }
+                if (((String) ewl.getKey()).trim().equalsIgnoreCase("Default Color Background")) {
+                    istanza.setColorDefault(Color.getColor(((String) ewl.getValue()).trim()));
+                    continue;
+                }
+                throw  new InvalidPropertiesFormatException("Setting invalid");
+            }
+            catch(Exception e){
+                System.out.println("Impossible to decode "  + ((String)ewl.getKey()).trim()  + ewl.getValue() + " ." + e.getLocalizedMessage() + " Will use default setting");
+            }
+        }
+    }
 
     public void save(){
         Map<String, Object > toSave = new HashMap<String, Object>();
@@ -118,7 +172,7 @@ public class ConfigurationFile {
         toSave.put("GridNumberRow" , getNumberGridRow());
         toSave.put("GridNumberColumn", getNumberGridColumn());
         toSave.put("Resolution High Block", getyLenghtBlock());
-        toSave.put("Resolution Lenght Block" , getxLenghtBlock());
+        toSave.put("Resolution Length Block" , getxLenghtBlock());
         toSave.put("Default Color Background", getColorDefault());
         toSave.put("Allow Nullify" , isAllowNullify());
         toSave.put("Allow Resize", isAllowResize());
