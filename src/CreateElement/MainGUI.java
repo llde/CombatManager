@@ -7,8 +7,7 @@ import Util.ConfigurationFile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 /**
  * Created by Lorenzo on 25/04/2015.
@@ -20,7 +19,17 @@ public class MainGUI  implements Runnable {
         JFrame griglia = new JFrame("Griglia");
         JFrame selezione = new JFrame("Selezione elemento");
         titolo.setSize(300, 100);
-        titolo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        titolo.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        titolo.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(titolo, "Are you sure ?") == JOptionPane.OK_OPTION) {
+                    titolo.dispose();
+                    ConfigurationFile.GetConfig().save();
+                    System.exit(0);
+                }
+            }
+        });
         JToolBar principale = new JToolBar();
         principale.add(new JButton("Load"));
         principale.add(new JButton("Save"));
