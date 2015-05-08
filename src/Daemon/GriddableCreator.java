@@ -7,8 +7,9 @@ import Charcacter.NPC;
 import Charcacter.PG;
 import Gridder.Gridable;
 import Gridder.ManageableTypes;
+import javafx.beans.property.*;
+import javafx.scene.paint.Color;
 
-import java.awt.*;
 
 /**
  * Created by Lorenzo on 27/04/2015.
@@ -16,16 +17,16 @@ import java.awt.*;
  */
 public class GriddableCreator {
     private Gridable    Ogg;
-    private String nome;
-    private boolean univoco;
-    private Color colore;
+    private StringProperty nome;
+    private BooleanProperty univoco;
+    private ObjectProperty<Color> colore;
     private ManageableTypes  Tipo;
 
     public GriddableCreator(Object... inf){
         this.Tipo = ManageableTypes.valueOf(((String) inf[0]).toUpperCase());
-        this.nome = (String) inf[1];
-        this.colore = (Color) inf[2];
-        this.univoco = (Boolean) inf[3];
+        this.nome = new SimpleStringProperty((String) inf[1]) ;
+        this.colore =  new SimpleObjectProperty<Color>((Color) inf[2]);
+        this.univoco = new SimpleBooleanProperty((Boolean)inf[3]);
         if(this.Tipo == ManageableTypes.FLORA) {
             this.Ogg = new Flora(nome,colore,univoco);
         }
@@ -47,12 +48,12 @@ public class GriddableCreator {
         return Ogg;
     }
 
-    public String getName(){ return  this.nome;}
+    public StringProperty getName(){ return  this.nome;}
 
     public ManageableTypes getType(){ return this.Tipo;}
 
-    public Color getColor(){ return this.colore;}
+    public ObjectProperty<Color> getColor(){ return this.colore;}
 
-    public Boolean getUnique(){ return this.univoco;}
+    public BooleanProperty getUnique(){ return this.univoco;}
 
 }

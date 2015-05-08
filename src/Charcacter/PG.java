@@ -1,33 +1,29 @@
 package Charcacter;
 
-import javax.swing.*;
-import java.awt.*;
+import javafx.beans.property.*;
+import javafx.scene.paint.*;
+
 
 /**
  * Created by Lorenzo on 22/04/2015.
  */
 public class PG implements Character{
-    private  String nome;
-    private boolean block;
-    private boolean uniqness;
-    private Color colore;
+    private StringProperty nome;
+    private BooleanProperty block;
+    private BooleanProperty uniqness;
+    private ObjectProperty<Color> colore;
 
 
 
-    public PG(String nome, Color  colore, boolean uniq){
+    public PG(StringProperty nome, ObjectProperty<Color>  colore, BooleanProperty uniq){
         this.nome = nome;
         this.colore = colore;
         this.uniqness = uniq;
 
     }
     @Override
-    public Color getColor() {
+    public ObjectProperty<Color> getColor() {
         return this.colore;
-    }
-
-    @Override
-    public Icon getIcon() {
-        return null;
     }
 
     @Override
@@ -35,11 +31,6 @@ public class PG implements Character{
     }
 
     @Override
-    public void setIcon() {
-
-    }
-
-    @Override
-    public boolean IsUnique(){return uniqness;}
+    public BooleanProperty IsUnique(){return uniqness;}
 
 }

@@ -3,17 +3,21 @@
  * Alpha version of D&D position for play by forum adventures and combat.
  * Mine first Java GUI program.
  */
-import CreateElement.MainGUI;
+import CreateElement.TableViewer;
+import Grid.MangedGridFX;
+import Resource.UIManager;
 import Util.ConfigurationFile;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,12 +27,6 @@ public class Main extends Application {
 //This fields are assigned by the compiler with the FXML notation
     @FXML
     private Button  NEW;
-
-    @FXML
-    private GridPane GridModel;
-
-    @FXML
-    private TableView TableGen;
 
 
     private static void iniz(String[] args){
@@ -44,8 +42,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(initRes());
-        primaryStage.show();
+
+        UIManager UIMAN = UIManager.getInstance();
+        UIMAN.setMainScene(initRes());
+        MangedGridFX Grid = new MangedGridFX();
+        TableViewer view = new TableViewer();
+        primaryStage.setScene(UIMAN.getMainScene());
+        UIMAN.setMainStage(primaryStage);
+        UIMAN.getMainStage().show();
     }
 
     public Scene initRes(){
@@ -53,8 +57,9 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource("Resource/MainGUI.fxml"));
         loader.setController(this);
         try {
-            TitledPane ancora = loader.load();
+            ButtonBar ancora = loader.load();
             this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
+
             return new Scene(ancora);
         } catch (IOException e) {
             e.printStackTrace();

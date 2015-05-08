@@ -1,33 +1,31 @@
 package Charcacter;
 
-import javax.swing.*;
-import java.awt.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.paint.Color;
+
 
 /**
  * Created by Lorenzo on 22/04/2015.
  */
 public class NPC implements Character{
-    private  String nome;
-    private boolean block;
-    private boolean uniqness;
-    private Color colore;
+    private StringProperty nome;
+    private BooleanProperty block;
+    private BooleanProperty uniqness;
+    private ObjectProperty<Color> colore;
 
 
 
-    public NPC(String nome, Color  colore, boolean uniq){
+    public NPC(StringProperty nome, ObjectProperty<Color>  colore, BooleanProperty uniq){
         this.nome = nome;
         this.colore = colore;
         this.uniqness = uniq;
 
     }
     @Override
-    public Color getColor() {
+    public ObjectProperty<Color> getColor() {
         return this.colore;
-    }
-
-    @Override
-    public Icon getIcon() {
-        return null;
     }
 
     @Override
@@ -35,11 +33,7 @@ public class NPC implements Character{
     }
 
     @Override
-    public void setIcon() {
-
-    }
-    @Override
-    public boolean IsUnique(){return uniqness;}
+    public BooleanProperty IsUnique(){return uniqness;}
 
 }
 

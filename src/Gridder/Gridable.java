@@ -1,7 +1,8 @@
 package Gridder;
 
-import javax.swing.*;
-import java.awt.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.scene.paint.*;
 
 /**
  * Created by Lorenzo on 25/04/2015.
@@ -10,15 +11,15 @@ import java.awt.*;
  */
 public interface Gridable {
 
-    Color getColor();
+    ObjectProperty<Color> getColor();
 
-    Icon getIcon();
+  //  Icon getIcon();
 
     void setColor();
 
 
-    void setIcon();
+  //  void setIcon();
 
 
-    boolean IsUnique();
+    BooleanProperty IsUnique();
 }

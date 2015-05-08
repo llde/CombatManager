@@ -1,12 +1,14 @@
 package Resource;
 
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * Created by Lorenzo on 08/05/2015.
  */
 public class UIManager {
     private static UIManager ourInstance = new UIManager();
+    private Stage MainStage;
     private Scene MainScene;
     private Scene GridScene;
     private Scene  TableScene;
@@ -16,6 +18,11 @@ public class UIManager {
     }
 
     private UIManager() {
+        this.BuilderScene = null;
+        this.GridScene = null;
+        this.MainScene = null;
+        this.TableScene = null;
+        this.MainStage = null;
     }
 
     public Scene getTableScene() {
@@ -48,5 +55,13 @@ public class UIManager {
 
     public void setBuilderScene(Scene builderScene) {
         BuilderScene = builderScene;
+    }
+
+    public Stage getMainStage() {
+        return MainStage;
+    }
+
+    public void setMainStage(Stage mainStage) {
+        MainStage = mainStage;
     }
 }
