@@ -9,10 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -43,6 +40,7 @@ public class TableViewer{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/TableGUI.fxml"));
         ObservableList<GriddableCreator> k = FXCollections.observableArrayList();
         k.add(new GriddableCreator("Flora", "Foresta", Color.CHOCOLATE, true));
+        k.add(new GriddableCreator("Flora", "Mare", Color.BLUE, false));
         try {
             loader.setController(this);
             ScrollPane grid = loader.load();
@@ -50,23 +48,35 @@ public class TableViewer{
             ColumnType.setCellValueFactory(cellData -> cellData.getValue().getType());
             ColumnColor.setCellValueFactory(cellData -> cellData.getValue().getColor());
             ColumnUnique.setCellValueFactory(cellData -> cellData.getValue().getUnique());
-            ColumnColor.setCellFactory(column -> {
-                return new TableCell<GriddableCreator,Color>() {
+            ColumnColor.setCellFactory(column -> new TableCell<GriddableCreator, Color>() {
 
-                    @Override
-                    protected void updateItem(Color item, boolean empty) {
-                        super.updateItem(item, empty);
+                @Override
+                protected void updateItem(Color item, boolean empty) {
+                    super.updateItem(item, empty);
 
-                        if (item == null || empty) {
-                            setText(null);
-                        } else {
-                            setText(item.toString());
-                            setBackground(new Background(new BackgroundFill(item, CornerRadii.EMPTY, Insets.EMPTY)));
+                    if (item == null || empty) {
+                        setText(null);
+                    } else {
+                        setText(item.toString());
+                        setBackground(new Background(new BackgroundFill(item, CornerRadii.EMPTY, Insets.EMPTY)));
                         //To experiment    setBackground(new Background(new BackgroundFill(item, new CornerRadii(10), Insets.EMPTY)));
-                            setTextFill(item);
-                        }
+                        setTextFill(item);
                     }
-                };
+                }
+            });
+            ColumnUnique.setCellFactory(column -> new TableCell<GriddableCreator, Boolean>() {
+
+                @Override
+                protected void updateItem(Boolean item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setGraphic(null);
+                    } else {
+                        CheckBox checkbox = new CheckBox();
+                        checkbox.setSelected(item);
+                        setGraphic(checkbox);
+                    }
+                }
             });
             TableGen.setItems(k);
             Stage Grid = new Stage();
