@@ -1,15 +1,11 @@
 package CreateElement;
 
 import Daemon.GriddableCreator;
-import Gridder.Gridable;
-import Gridder.ManageableTypes;
 import Resource.UIManager;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
@@ -18,9 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
-import java.util.ResourceBundle;
 
 /**
  * Created by Lorenzo on 08/05/2015.
@@ -29,7 +22,7 @@ import java.util.ResourceBundle;
  */
 public class TableViewer{
     @FXML
-    private TableView TableGen;
+    private TableView<GriddableCreator> TableGen;
     @FXML
     private TableColumn<GriddableCreator,String> ColumnName;
     @FXML
@@ -42,13 +35,16 @@ public class TableViewer{
 
     public TableViewer() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/TableGUI.fxml"));
+        ObservableList<GriddableCreator> k = FXCollections.observableArrayList();
+        k.add(new GriddableCreator("Flora", "Foresta", Color.CHOCOLATE, true));
         try {
             ScrollPane grid = loader.load();
+            ColumnName.setCellValueFactory(cellData -> cellData.getValue().getName());
             Stage Grid = new Stage();
             Scene scena = new Scene(grid);
             Grid.setScene(scena);
             UIManager.getInstance().setTableScene(scena);
-            Grid.setX(800);
+            Grid.setX(200);
             Grid.show();
         } catch (IOException e) {
             e.printStackTrace();

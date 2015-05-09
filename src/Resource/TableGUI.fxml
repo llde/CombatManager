@@ -5,12 +5,12 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <TableView prefHeight="460.0" prefWidth="407.0">
+      <TableView fx:id="TableGen" prefHeight="460.0" prefWidth="407.0">
         <columns>
-          <TableColumn fx:id="ColumnName" prefWidth="132.0" text="Name" />
-          <TableColumn fx:id="ColumnType" prefWidth="81.0" text="Type" />
-            <TableColumn fx:id="ColumnColor" prefWidth="99.0" text="Color" />
-            <TableColumn fx:id="ColumnUnique" prefWidth="83.0" text="Unique" />
+          <TableColumn fx:id="ColumnName" editable="false" prefWidth="132.0" sortable="false" text="Name" />
+          <TableColumn fx:id="ColumnType" editable="false" prefWidth="81.0" sortable="false" text="Type" />
+            <TableColumn fx:id="ColumnColor" prefWidth="99.0" sortable="false" text="Color" />
+            <TableColumn fx:id="ColumnUnique" editable="false" prefWidth="83.0" sortable="false" text="Unique" />
         </columns>
       </TableView>
    </content>
