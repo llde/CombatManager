@@ -21,12 +21,14 @@ public class GriddableCreator {
     private BooleanProperty univoco;
     private ObjectProperty<Color> colore;
     private ManageableTypes  Tipo;
+    private ObjectProperty<ManageableTypes> Type;
 
     public GriddableCreator(Object... inf){
         this.Tipo = ManageableTypes.valueOf(((String) inf[0]).toUpperCase());
         this.nome = new SimpleStringProperty((String) inf[1]) ;
         this.colore =  new SimpleObjectProperty<Color>((Color) inf[2]);
         this.univoco = new SimpleBooleanProperty((Boolean)inf[3]);
+        this.Type = new SimpleObjectProperty<ManageableTypes>(ManageableTypes.valueOf(((String) inf[0]).toUpperCase()));
         if(this.Tipo == ManageableTypes.FLORA) {
             this.Ogg = new Flora(nome,colore,univoco);
         }
@@ -50,7 +52,7 @@ public class GriddableCreator {
 
     public StringProperty getName(){ return  this.nome;}
 
-    public ManageableTypes getType(){ return this.Tipo;}
+    public ObjectProperty<ManageableTypes> getType(){ return this.Type;}
 
     public ObjectProperty<Color> getColor(){ return this.colore;}
 

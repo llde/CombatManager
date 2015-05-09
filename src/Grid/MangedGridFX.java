@@ -21,8 +21,8 @@ public class MangedGridFX {
     public MangedGridFX(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/GridGUI.fxml"));
         try {
-            ScrollPane grid = loader.load();
             loader.setController(this);
+            ScrollPane grid = loader.load();
             Stage Grid = new Stage();
             Scene scena = new Scene(grid);
             UIManager.getInstance().setGridScene(scena);
