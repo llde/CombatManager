@@ -5,16 +5,19 @@ import Gridder.ManageableTypes;
 import Resource.UIManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -79,6 +82,13 @@ public class TableViewer{
                 }
             });
             TableGen.setItems(k);
+            TableGen.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.print(TableGen.getSelectionModel().getSelectedItem());
+                    event.consume();
+                }
+            });
             Stage Grid = new Stage();
             Scene scena = new Scene(grid);
             Grid.setScene(scena);
