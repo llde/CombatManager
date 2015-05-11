@@ -87,7 +87,9 @@ public class TableViewer{
             TableGen.setItems(k);
             TableGen.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
                 System.out.println(TableGen.getSelectionModel().getSelectedItem());
-                Holder hold = Holder.GetHolder(TableGen.getSelectionModel().getSelectedItem().get());
+                if (!TableGen.getSelectionModel().isEmpty()) {
+                    Holder hold = Holder.GetHolder(TableGen.getSelectionModel().getSelectedItem().get());
+                }
                 event.consume();
             });
             Stage Grid = new Stage();

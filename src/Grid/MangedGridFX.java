@@ -12,6 +12,7 @@ import java.io.IOException;
 
 /**
  * Created by Lorenzo on 08/05/2015.
+ * Managed Grid rework for JavaFX. Use GridPane instead of a JTable.
  */
 public class MangedGridFX {
     @FXML
