@@ -49,4 +49,9 @@ public class Flora implements  Ambience{
 
     @Override
     public BooleanProperty IsUnique(){return uniqness;}
+
+    @Override
+    public String toString(){
+        return TerrainType().getName() + ", " + getColor().getName() + ", " + IsUnique().get();
+    }
 }

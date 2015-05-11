@@ -58,4 +58,9 @@ public class GriddableCreator {
 
     public BooleanProperty getUnique(){ return this.univoco;}
 
+    @Override
+    public String toString(){
+        return getName().get() +" ," + getType().get() + " ," + getColor().get() + " ," + getUnique().get();
+    }
+
 }

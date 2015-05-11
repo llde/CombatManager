@@ -1,10 +1,13 @@
 package CreateElement;
 
 import Daemon.GriddableCreator;
+import Daemon.Holder;
 import Gridder.ManageableTypes;
 import Resource.UIManager;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,12 +85,10 @@ public class TableViewer{
                 }
             });
             TableGen.setItems(k);
-            TableGen.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.print(TableGen.getSelectionModel().getSelectedItem());
-                    event.consume();
-                }
+            TableGen.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                System.out.println(TableGen.getSelectionModel().getSelectedItem());
+                Holder hold = Holder.GetHolder(TableGen.getSelectionModel().getSelectedItem().get());
+                event.consume();
             });
             Stage Grid = new Stage();
             Scene scena = new Scene(grid);
