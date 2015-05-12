@@ -1,7 +1,9 @@
 package Charcacter;
 
-import javafx.beans.property.*;
-import javafx.scene.paint.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.paint.Color;
 
 
 /**

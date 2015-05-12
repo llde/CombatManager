@@ -1,8 +1,8 @@
 package Daemon;
 
 import Ambience.Flora;
-import Charcacter.Fauna;
 import Ambience.Obj;
+import Charcacter.Fauna;
 import Charcacter.NPC;
 import Charcacter.PG;
 import Gridder.Gridable;

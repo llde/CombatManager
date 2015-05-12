@@ -4,11 +4,8 @@ import Daemon.GriddableCreator;
 import Daemon.Holder;
 import Gridder.ManageableTypes;
 import Resource.UIManager;
-import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -20,9 +17,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
-import java.io.IOException;
 
 /**
  * Created by Lorenzo on 08/05/2015.

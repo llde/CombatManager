@@ -3,6 +3,7 @@
  * Alpha version of D&D position for play by forum adventures and combat.
  * Mine first Java GUI program.
  */
+
 import CreateElement.TableViewer;
 import Grid.MangedGridFX;
 import Resource.UIManager;
@@ -13,11 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;

@@ -2,7 +2,7 @@ package Gridder;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
 
 /**
  * Created by Lorenzo on 25/04/2015.
