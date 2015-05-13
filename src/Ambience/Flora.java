@@ -52,6 +52,6 @@ public class Flora implements  Ambience{
 
     @Override
     public String toString(){
-        return TerrainType().getName() + ", " + getColor().getName() + ", " + IsUnique().get();
+        return TerrainType().get() + ", " + getColor().get() + ", " + IsUnique().get();
     }
 }
