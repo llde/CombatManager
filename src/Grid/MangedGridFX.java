@@ -34,6 +34,7 @@ import java.util.List;
  * Managed Grid rework for JavaFX. Use TableView instead of a JTable.
  */
 public class MangedGridFX {
+    @SuppressWarnings("unused")
     @FXML
     private TableView<ObservableList<Gridable>> GridModel;
 
@@ -51,12 +52,23 @@ public class MangedGridFX {
         ObservableList<Gridable> i1 = FXCollections.observableList(f1);
         k.add(i);
         k.add(i1);
+        ArrayList<TableColumn<ObservableList<Gridable>,?>> co = new ArrayList<>(10);
+        for(int v = 0; v <= 10; v++) {
+            co.add(new TableColumn<>());
+        }
+        ObservableList<TableColumn<ObservableList<Gridable>,?>> toColumn = FXCollections.observableArrayList(co);
         try {
             loader.setController(this);
             ScrollPane grid = loader.load();
+            GridModel.getColumns().addAll(toColumn);
             GridModel.setItems(k);
+            GridModel.setFixedCellSize(40);
             for(int x = 0; x < GridModel.getColumns().size(); x++) {
                 final int t = x;
+                GridModel.getColumns().get(t).setMaxWidth(40);
+                GridModel.getColumns().get(t).setMinWidth(40);
+                GridModel.getColumns().get(t).setPrefWidth(40);
+                GridModel.getColumns().get(t).setResizable(false);
                 ((TableColumn<ObservableList<Gridable>, Gridable>) (GridModel.getColumns().get(t))).setCellValueFactory(cellDataFeatures -> {
                     ObservableList<Gridable> values = cellDataFeatures.getValue();
                     if (t >= values.size()) {
@@ -73,7 +85,7 @@ public class MangedGridFX {
 
                             @Override
                             public Gridable getValue() {
-                                return new GriddableCreator("FLora", "For", Color.ALICEBLUE, false).get();
+                                return new GriddableCreator("Flora", "For", Color.ALICEBLUE, false).get();
                             }
 
                             @Override

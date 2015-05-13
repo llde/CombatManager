@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="344.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
-  <buttons>
-    <Button fx:id="NEW" mnemonicParsing="false" text="New" />
-      <Button mnemonicParsing="false" text="Load" />
-      <Button mnemonicParsing="false" text="Save" />
-      <Button mnemonicParsing="false" text="Export" />
-  </buttons>
+<ButtonBar xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="54.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8.0.40">
+    <buttons>
+        <Button fx:id="NEW" mnemonicParsing="false" text="New"/>
+        <Button mnemonicParsing="false" text="Load"/>
+        <Button mnemonicParsing="false" text="Save"/>
+        <Button mnemonicParsing="false" text="Export"/>
+    </buttons>
 </ButtonBar>

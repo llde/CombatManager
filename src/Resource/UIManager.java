@@ -11,11 +11,8 @@ public class UIManager {
     private Stage MainStage;
     private Scene MainScene;
     private Scene GridScene;
-    private Scene  TableScene;
-    private Scene  BuilderScene;
-    public static UIManager getInstance() {
-        return ourInstance;
-    }
+    private Scene TableScene;
+    private Scene BuilderScene;
 
     private UIManager() {
         this.BuilderScene = null;
@@ -23,6 +20,10 @@ public class UIManager {
         this.MainScene = null;
         this.TableScene = null;
         this.MainStage = null;
+    }
+
+    public static UIManager getInstance() {
+        return ourInstance;
     }
 
     public Scene getTableScene() {
