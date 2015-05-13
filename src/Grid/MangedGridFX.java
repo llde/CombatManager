@@ -1,6 +1,7 @@
 package Grid;
 
 import Daemon.GriddableCreator;
+import Daemon.Holder;
 import Gridder.Gridable;
 import Resource.UIManager;
 import javafx.beans.InvalidationListener;
@@ -132,7 +133,12 @@ public class MangedGridFX {
                                 }
                             }
                         };
-                        cell.setOnMouseClicked(event -> System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t)));
+                        cell.setOnMouseClicked(event -> {
+                            System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t));
+                            GridModel.getSelectionModel().getSelectedItem().set(t, Holder.GetHolder().getGridable());
+                            cell.getTableColumn().setVisible(false);
+                            cell.getTableColumn().setVisible(true);
+                        });
                         return cell;
                     }
                 });
