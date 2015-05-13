@@ -1,6 +1,7 @@
 package Grid;
 
 import Daemon.GriddableCreator;
+import Daemon.Holder;
 import Gridder.Gridable;
 import Resource.UIManager;
 import javafx.beans.InvalidationListener;
@@ -8,8 +9,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
