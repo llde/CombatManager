@@ -58,9 +58,11 @@ public class MangedGridFX {
             GridModel.setItems(k);
             for(int x = 0; x < GridModel.getColumns().size(); x++) {
                 final int t = x;
+                //UGLY workaround to make act the tableview as a Swing JTable, as cellBased and not RowBased
                 ((TableColumn<ObservableList<Gridable>, Gridable>) (GridModel.getColumns().get(t))).setCellValueFactory(cellDataFeatures -> {
                     ObservableList<Gridable> values = cellDataFeatures.getValue();
                     if (t >= values.size()) {
+                        //Implements ObservableValue interface for my Gridable Objects without touch the Gridable Interface..
                         return new ObservableValue<Gridable>() {
                             @Override
                             public void addListener(ChangeListener<? super Gridable> listener) {
@@ -134,10 +136,10 @@ public class MangedGridFX {
                             }
                         };
                         cell.setOnMouseClicked(event -> {
-                            System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t));
+                            System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t));  //Togliere in fase finale
                             GridModel.getSelectionModel().getSelectedItem().set(t, Holder.GetHolder().getGridable());
-                            cell.getTableColumn().setVisible(false);
-                            cell.getTableColumn().setVisible(true);
+                            cell.getTableColumn().setVisible(false); //Workaround to force update of the TableView.
+                            cell.getTableColumn().setVisible(true);  //sometimes I miss Swing. :(
                         });
                         return cell;
                     }
