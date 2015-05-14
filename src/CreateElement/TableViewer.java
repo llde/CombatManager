@@ -24,14 +24,23 @@ import javafx.stage.Stage;
  * Part of the JavaFX porting
  */
 public class TableViewer{
+    @SuppressWarnings("unused")
     @FXML
     private TableView<GriddableCreator> TableGen;
+
+    @SuppressWarnings("unused")
     @FXML
     private TableColumn<GriddableCreator,String> ColumnName;
+
+    @SuppressWarnings("unused")
     @FXML
     private TableColumn<GriddableCreator,ManageableTypes>  ColumnType;
+
+    @SuppressWarnings("unused")
     @FXML
     private TableColumn<GriddableCreator, Color> ColumnColor;
+
+    @SuppressWarnings("unused")
     @FXML
     private TableColumn<GriddableCreator, Boolean>  ColumnUnique;
 
@@ -82,6 +91,7 @@ public class TableViewer{
             TableGen.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
                 System.out.println(TableGen.getSelectionModel().getSelectedItem());
                 if (!TableGen.getSelectionModel().isEmpty()) {
+                    @SuppressWarnings("unused")
                     Holder hold = Holder.GetHolder(TableGen.getSelectionModel().getSelectedItem().get());
                 }
                 event.consume();

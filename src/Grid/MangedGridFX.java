@@ -41,6 +41,7 @@ public class MangedGridFX {
     public MangedGridFX(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/GridGUI.fxml"));
         List<Gridable> f = new ArrayList<>();
+        Gridable defaulting = new GriddableCreator("Flora", "foresta", Color.GREEN, false).get();
         f.add(new GriddableCreator("Flora", "Foresta", Color.CHOCOLATE, true).get());
         f.add(new GriddableCreator("Flora", "Mare", Color.BLUE, true).get());
         List<Gridable> f1 = new ArrayList<>();
