@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -53,16 +54,26 @@ public class MangedGridFX {
         k.add(i);
         k.add(i1);
         ArrayList<TableColumn<ObservableList<Gridable>,?>> co = new ArrayList<>(10);
-        for(int v = 0; v <= 10; v++) {
+        ArrayList<Gridable> obj = new ArrayList<>(10);
+        for(int h = 0; h < 10; h++){
+            obj.add(defaulting);
+        }
+        for(int v = 0; v < 10; v++) {
             co.add(new TableColumn<>());
         }
         ObservableList<TableColumn<ObservableList<Gridable>,?>> toColumn = FXCollections.observableArrayList(co);
+        ObservableList<ObservableList<Gridable>>  items  = FXCollections.observableArrayList();
+        for(int o = 0; o < 10; o++){
+            items.add(FXCollections.observableArrayList(obj));
+        }
         try {
             loader.setController(this);
             ScrollPane grid = loader.load();
             GridModel.getColumns().addAll(toColumn);
-            GridModel.setItems(k);
+            GridModel.setItems(items);
             GridModel.setFixedCellSize(40);
+            GridModel.setTableMenuButtonVisible(false);
+            GridModel.setBorder(Border.EMPTY);
             for(int x = 0; x < GridModel.getColumns().size(); x++) {
                 final int t = x;
                 GridModel.getColumns().get(t).setMaxWidth(40);
@@ -146,6 +157,7 @@ public class MangedGridFX {
                                 }
                             }
                         };
+                        cell.setBorder(Border.EMPTY);   //Hide Borders beetween columns
                         cell.setOnMouseClicked(event -> {
                             System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t));  //Togliere in fase finale
                             GridModel.getSelectionModel().getSelectedItem().set(t, Holder.GetHolder().getGridable());
