@@ -103,7 +103,7 @@ public class TableViewer{
             TableGen.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
                 @Override
                 public void handle(ContextMenuEvent event) {
-                    MenuItem nuovo  = new MenuItem("New");
+                    MenuItem nuovo = new MenuItem("New");
                     nuovo.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
@@ -112,7 +112,7 @@ public class TableViewer{
                         }
                     });
                     MenuItem del = new MenuItem("Delete");
-                    ContextMenu menu = new ContextMenu(nuovo,del);
+                    ContextMenu menu = new ContextMenu(nuovo, del);
                     menu.setAnchorX(event.getScreenX());
                     menu.setAnchorY(event.getScreenY());
                     menu.setAutoHide(true);
@@ -124,6 +124,7 @@ public class TableViewer{
             Scene scena = new Scene(grid);
             Grid.setScene(scena);
             UIManager.getInstance().setTableScene(scena);
+            UIManager.getInstance().setTableStage(Grid);
             Grid.setX(200);
             Grid.show();
         } catch (Exception e) {
