@@ -41,18 +41,7 @@ public class MangedGridFX {
     @SuppressWarnings("unchecked")
     public MangedGridFX(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/GridGUI.fxml"));
-        List<Gridable> f = new ArrayList<>();
         Gridable defaulting = new GriddableCreator("Flora", "foresta", Color.GREEN, false).get();
-        f.add(new GriddableCreator("Flora", "Foresta", Color.CHOCOLATE, true).get());
-        f.add(new GriddableCreator("Flora", "Mare", Color.BLUE, true).get());
-        List<Gridable> f1 = new ArrayList<>();
-        f1.add(new GriddableCreator("Flora", "Foresta", Color.GREEN, true).get());
-        f1.add(new GriddableCreator("Flora", "Mare", Color.MAGENTA, false).get());
-        ObservableList<ObservableList<Gridable>>  k = FXCollections.observableArrayList();
-        ObservableList<Gridable> i = FXCollections.observableList(f);
-        ObservableList<Gridable> i1 = FXCollections.observableList(f1);
-        k.add(i);
-        k.add(i1);
         ArrayList<TableColumn<ObservableList<Gridable>,?>> co = new ArrayList<>(10);
         ArrayList<Gridable> obj = new ArrayList<>(10);
         for(int h = 0; h < 10; h++){

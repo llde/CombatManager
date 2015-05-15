@@ -6,11 +6,14 @@ import Gridder.ManageableTypes;
 import Resource.UIManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -53,6 +56,7 @@ public class TableViewer{
         try {
             loader.setController(this);
             ScrollPane grid = loader.load();
+            Stage Grid = new Stage();
             ColumnName.setCellValueFactory(cellData -> cellData.getValue().getName());
             ColumnType.setCellValueFactory(cellData -> cellData.getValue().getType());
             ColumnColor.setCellValueFactory(cellData -> cellData.getValue().getColor());
@@ -96,7 +100,27 @@ public class TableViewer{
                 }
                 event.consume();
             });
-            Stage Grid = new Stage();
+            TableGen.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+                @Override
+                public void handle(ContextMenuEvent event) {
+                    MenuItem nuovo  = new MenuItem("New");
+                    nuovo.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            BuilderScene n = new BuilderScene();
+                            Grid.setScene(UIManager.getInstance().getBuilderScene());
+                        }
+                    });
+                    MenuItem del = new MenuItem("Delete");
+                    ContextMenu menu = new ContextMenu(nuovo,del);
+                    menu.setAnchorX(event.getScreenX());
+                    menu.setAnchorY(event.getScreenY());
+                    menu.setAutoHide(true);
+                    menu.setConsumeAutoHidingEvents(true);
+                    menu.show(TableGen.getScene().getWindow());
+                }
+            });
+
             Scene scena = new Scene(grid);
             Grid.setScene(scena);
             UIManager.getInstance().setTableScene(scena);
