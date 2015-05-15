@@ -1,5 +1,6 @@
 package CreateElement;
 
+import Daemon.GriddableCreator;
 import Gridder.ManageableTypes;
 import Resource.UIManager;
 import javafx.event.ActionEvent;
@@ -7,10 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -21,7 +19,7 @@ import java.io.IOException;
 public class BuilderScene  {
     @SuppressWarnings("unused")
     @FXML
-    private ComboBox UniqueCombox;
+    private CheckBox UniqueCombox;
 
     @SuppressWarnings("unused")
     @FXML
@@ -50,9 +48,18 @@ public class BuilderScene  {
            AnchorPane loaded = loader.load();
             Scene scen = new Scene(loaded);
             UIManager.getInstance().setBuilderScene(scen);
+            TypeBox.getItems().addAll(ManageableTypes.values());
+            Abort.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
+                }
+            });
             OK.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    GriddableCreator x = new GriddableCreator(TypeBox.getSelectionModel().getSelectedItem(), NameField.getText(), ColorBox.getValue(), UniqueCombox.isSelected());
+                    System.out.println(x.toString());
                     UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
                 }
             });

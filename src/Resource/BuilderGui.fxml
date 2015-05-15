@@ -7,8 +7,8 @@
       <TextField fx:id="NameField" accessibleText="Name" layoutX="14.0" layoutY="22.0" prefHeight="25.0" prefWidth="564.0" promptText="Name" />
       <ComboBox fx:id="TypeBox" accessibleText="Type" layoutX="15.0" layoutY="72.0" prefWidth="150.0" promptText="Type" />
       <ColorPicker fx:id="ColorBox" accessibleText="Color" layoutX="370.0" layoutY="72.0" />
-      <CheckBox id="Unique" fx:id="UniqeCombox" accessibleText="Unique" ellipsisString="Unique" layoutX="30.0" layoutY="148.0" mnemonicParsing="false" text="Unique" wrapText="true" />
+      <CheckBox id="Unique" fx:id="UniqueCombox" accessibleText="Unique" ellipsisString="Unique" layoutX="30.0" layoutY="148.0" mnemonicParsing="false" text="Unique" wrapText="true" />
       <Button fx:id="OK" layoutX="34.0" layoutY="330.0" mnemonicParsing="false" text="Ok" />
-      <Button fx:id="AbortButt" layoutX="123.0" layoutY="330.0" mnemonicParsing="false" text="Abort" />
+      <Button fx:id="Abort" layoutX="123.0" layoutY="330.0" mnemonicParsing="false" text="Abort" />
    </children>
 </AnchorPane>
