@@ -9,12 +9,17 @@ import Grid.MangedGridFX;
 import Resource.UIManager;
 import Util.ConfigurationFile;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -38,12 +43,30 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                event.consume();
+                Stage x = new Stage();
+                Text t1 = new Text("Do you really want to close application?");
+                Button b1 = new Button("Yes");
+                b1.setOnAction((even) -> System.exit(0)); //   Add configuration file save methods
+                Button b2 = new Button("No");
+                VBox h= new VBox(b1,b2);
+                h.setAlignment(Pos.CENTER);
+                h.setSpacing(40);
+                Scene clos = new Scene(h);
+                x.setScene(clos);
+                x.show();
 
+            }
+        });
         UIManager UIMAN = UIManager.getInstance();
         UIMAN.setMainScene(initRes());
         MangedGridFX Grid = new MangedGridFX();
         TableViewer view = new TableViewer();
         primaryStage.setScene(UIMAN.getMainScene());
+        UIMAN.setTable(view);
         UIMAN.setMainStage(primaryStage);
         UIMAN.getMainStage().show();
     }

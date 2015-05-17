@@ -131,4 +131,8 @@ public class TableViewer{
             e.printStackTrace();
         }
     }
+
+    public void addRow(GriddableCreator c){
+        TableGen.getItems().add(c);
+    }
 }

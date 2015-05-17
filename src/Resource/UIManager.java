@@ -1,5 +1,6 @@
 package Resource;
 
+import CreateElement.TableViewer;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -14,6 +15,8 @@ public class UIManager {
     private Scene TableScene;
     private Scene BuilderScene;
     private Stage TableStage;
+
+    private TableViewer table;
 
     private UIManager() {
         this.BuilderScene = null;
@@ -74,6 +77,14 @@ public class UIManager {
 
     public void setTableStage(Stage tableStage) {
         TableStage = tableStage;
+    }
+
+    public TableViewer getTable() {
+        return table;
+    }
+
+    public void setTable(TableViewer table) {
+        this.table = table;
     }
 
 }

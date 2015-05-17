@@ -60,6 +60,7 @@ public class BuilderScene  {
                 public void handle(ActionEvent event) {
                     GriddableCreator x = new GriddableCreator(TypeBox.getSelectionModel().getSelectedItem(), NameField.getText(), ColorBox.getValue(), UniqueCombox.isSelected());
                     System.out.println(x.toString());
+                    UIManager.getInstance().getTable().addRow(x);
                     UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
                 }
             });
