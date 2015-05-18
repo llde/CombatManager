@@ -135,4 +135,8 @@ public class TableViewer{
     public void addRow(GriddableCreator c){
         TableGen.getItems().add(c);
     }
+
+    public ObservableList<GriddableCreator> obtainTable(){
+        return this.TableGen.getItems();
+    }
 }

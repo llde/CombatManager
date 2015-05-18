@@ -169,4 +169,7 @@ public class MangedGridFX {
             e.printStackTrace();
         }
     }
+    public ObservableList<ObservableList<Gridable>>  obtainGrid(){
+        return null;
+    }
 }
