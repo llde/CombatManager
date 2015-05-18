@@ -49,12 +49,16 @@ public class Main extends Application {
                 event.consume();
                 Stage x = new Stage();
                 Text t1 = new Text("Do you really want to close application?");
+                ButtonBar bar = new ButtonBar(ButtonBar.BUTTON_ORDER_WINDOWS);
                 Button b1 = new Button("Yes");
                 b1.setOnAction((even) -> System.exit(0)); //   Add configuration file save methods
                 Button b2 = new Button("No");
-                VBox h= new VBox(b1,b2);
+                ButtonBar.setButtonData(b1, ButtonBar.ButtonData.YES);
+                ButtonBar.setButtonData(b2, ButtonBar.ButtonData.NO);
+                bar.getButtons().addAll(b1,b2);
+                VBox h = new VBox(t1,bar);
                 h.setAlignment(Pos.CENTER);
-                h.setSpacing(40);
+                h.setSpacing(20);
                 Scene clos = new Scene(h);
                 x.setScene(clos);
                 x.show();
