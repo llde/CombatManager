@@ -4,6 +4,7 @@ import Daemon.GriddableCreator;
 import Daemon.Holder;
 import Gridder.Gridable;
 import Resource.UIManager;
+import Util.ConfigurationFile;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,15 +45,15 @@ public class MangedGridFX {
         Gridable defaulting = new GriddableCreator("Flora", "foresta", Color.GREEN, false).get();
         ArrayList<TableColumn<ObservableList<Gridable>,?>> co = new ArrayList<>(10);
         ArrayList<Gridable> obj = new ArrayList<>(10);
-        for(int h = 0; h < 10; h++){
+        for(int h = 0; h < ConfigurationFile.GetConfig().getNumberGridRow(); h++){
             obj.add(defaulting);
         }
-        for(int v = 0; v < 10; v++) {
+        for(int v = 0; v < ConfigurationFile.GetConfig().getNumberGridColumn(); v++) {
             co.add(new TableColumn<>());
         }
         ObservableList<TableColumn<ObservableList<Gridable>,?>> toColumn = FXCollections.observableArrayList(co);
         ObservableList<ObservableList<Gridable>>  items  = FXCollections.observableArrayList();
-        for(int o = 0; o < 10; o++){
+        for(int o = 0; o < ConfigurationFile.GetConfig().getNumberGridRow(); o++){
             items.add(FXCollections.observableArrayList(obj));
         }
         try {
@@ -60,14 +61,14 @@ public class MangedGridFX {
             ScrollPane grid = loader.load();
             GridModel.getColumns().addAll(toColumn);
             GridModel.setItems(items);
-            GridModel.setFixedCellSize(40);
+            GridModel.setFixedCellSize(ConfigurationFile.GetConfig().getyLenghtBlock());
             GridModel.setTableMenuButtonVisible(false);
             GridModel.setBorder(Border.EMPTY);
             for(int x = 0; x < GridModel.getColumns().size(); x++) {
                 final int t = x;
-                GridModel.getColumns().get(t).setMaxWidth(40);
-                GridModel.getColumns().get(t).setMinWidth(40);
-                GridModel.getColumns().get(t).setPrefWidth(40);
+                GridModel.getColumns().get(t).setMaxWidth(ConfigurationFile.GetConfig().getxLenghtBlock());
+                GridModel.getColumns().get(t).setMinWidth(ConfigurationFile.GetConfig().getxLenghtBlock());
+                GridModel.getColumns().get(t).setPrefWidth(ConfigurationFile.GetConfig().getxLenghtBlock());
                 GridModel.getColumns().get(t).setResizable(false);
                 //UGLY workaround to make act the tableview as a Swing JTable, as cellBased and not RowBased
                 ((TableColumn<ObservableList<Gridable>, Gridable>) (GridModel.getColumns().get(t))).setCellValueFactory(cellDataFeatures -> {
