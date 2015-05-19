@@ -67,7 +67,10 @@ public class TableViewer{
                 protected void updateItem(Color item, boolean empty) {
                     super.updateItem(item, empty);
 
-                    if (item == null || empty) {
+                    if
+
+
+                            (item == null || empty) {
                         setText(null);
                     } else {
                         setText(item.toString());

@@ -9,6 +9,7 @@ import Grid.MangedGridFX;
 import Resource.UIManager;
 import Util.ConfigurationFile;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.lang.management.PlatformLoggingMXBean;
 
 
 public class Main extends Application {
@@ -51,8 +53,9 @@ public class Main extends Application {
                 Text t1 = new Text("Do you really want to close application?");
                 ButtonBar bar = new ButtonBar(ButtonBar.BUTTON_ORDER_WINDOWS);
                 Button b1 = new Button("Yes");
-                b1.setOnAction((even) -> System.exit(0)); //   Add configuration file save methods
+                b1.setOnAction((even) -> Platform.exit()); //   Add configuration file save methods
                 Button b2 = new Button("No");
+                b2.setOnAction((even) -> x.close());
                 ButtonBar.setButtonData(b1, ButtonBar.ButtonData.YES);
                 ButtonBar.setButtonData(b2, ButtonBar.ButtonData.NO);
                 bar.getButtons().addAll(b1,b2);
