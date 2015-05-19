@@ -28,7 +28,6 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Lorenzo on 08/05/2015.
@@ -149,7 +148,9 @@ public class MangedGridFX {
                         };
                         cell.setBorder(Border.EMPTY);   //Hide Borders beetween columns
                         cell.setOnMouseClicked(event -> {
-                            System.out.println(GridModel.getSelectionModel().getSelectedItem().get(t));  //Togliere in fase finale
+                            if(!GridModel.getSelectionModel().getSelectedItem().get(t).IsUnique().get()) {
+                                System.out.print("Control unique");
+                            }
                             GridModel.getSelectionModel().getSelectedItem().set(t, Holder.GetHolder().getGridable());
                             cell.getTableColumn().setVisible(false); //Workaround to force update of the TableView.
                             cell.getTableColumn().setVisible(true);  //sometimes I miss Swing. :(
