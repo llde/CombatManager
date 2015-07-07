@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 /**
  * Created by Lorenzo on 27/04/2015.
  * MiddleEnd Object.
+ * TODO More robust check during creation.
  */
 public class GriddableCreator {
     private Gridable    Ogg;

@@ -1,6 +1,8 @@
 package Util;
 
-import java.awt.*;
+import Daemon.GriddableCreator;
+import Gridder.Gridable;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -17,7 +19,7 @@ import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 25/04/2015.
- * TODO save/load ini.
+ * TODO More option for Default Gridable. Add it to the Gridable TableView
  */
 public class ConfigurationFile {
     private int numberGridRow;
@@ -28,17 +30,20 @@ public class ConfigurationFile {
     private String Locale;
     private boolean allowNullify;
     private transient Color colorDefault;
+    private Gridable gridabled;
 
     private  static ConfigurationFile istanza = null;
 
     private ConfigurationFile(){  //default
         this.allowResize = true;
         this.allowNullify = true;
-        this.numberGridRow = 10;
-        this.numberGridColumn = 10;
-        this.xLenghtBlock = 40;
-        this.yLenghtBlock = 40;
-        this.colorDefault = Color.WHITE;
+        this.numberGridRow = 100;
+        this.numberGridColumn = 100;
+        this.xLenghtBlock = 10;
+        this.yLenghtBlock = 10;
+        this.colorDefault = Color.RED;
+        GriddableCreator gridableCreat = new GriddableCreator("Flora", "Base" , javafx.scene.paint.Color.rgb(colorDefault.getRed() , colorDefault.getGreen(), colorDefault.getBlue(), colorDefault.getAlpha()/255.0), false);
+        this.gridabled = gridableCreat.get();
         this.Locale = null;
     }
 
@@ -97,8 +102,8 @@ public class ConfigurationFile {
         this.yLenghtBlock = yLenghtBlock;
     }
 
-    public Color getColorDefault() {
-        return colorDefault;
+    public Gridable getGridableDefault() {
+        return this.gridabled;
     }
 
     public void setColorDefault(Color colorDefault) {
@@ -175,7 +180,7 @@ public class ConfigurationFile {
         toSave.put("GridNumberColumn", getNumberGridColumn());
         toSave.put("Resolution High Block", getyLenghtBlock());
         toSave.put("Resolution Length Block" , getxLenghtBlock());
-        toSave.put("Default Color Background", getColorDefault());
+        toSave.put("Default Color Background", getGridableDefault());
         toSave.put("Allow Nullify" , isAllowNullify());
         toSave.put("Allow Resize", isAllowResize());
         toSave.put("Locale", getLocale());

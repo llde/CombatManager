@@ -38,7 +38,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        ConfigurationFile.load("CombatManager.ini");
+      //  ConfigurationFile.load("CombatManager.ini");
         ConfigurationFile config = ConfigurationFile.GetConfig();
         iniz(args);
     }
