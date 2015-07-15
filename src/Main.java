@@ -73,7 +73,7 @@ public class Main extends Application {
         MangedGridFX Grid = new MangedGridFX();
         TableViewer view = new TableViewer();
         primaryStage.setScene(UIMAN.getMainScene());
-        UIMAN.setTable(view);
+        UIMAN.setTable(view)
         UIMAN.setMainStage(primaryStage);
         UIMAN.getMainStage().show();
     }

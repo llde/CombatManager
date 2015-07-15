@@ -22,6 +22,7 @@ public class ManagedGridResource {
         public ManagedGridTable(){
             super();
             for(int i = 0; i < Data.length; i++) {
+                //TODO controllo in caso di default non definito.
                 Arrays.fill(Data[i], config.getGridableDefault());
             }
         }

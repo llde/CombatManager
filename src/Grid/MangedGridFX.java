@@ -13,18 +13,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Lorenzo on 08/05/2015.
- * Managed Grid rework for JavaFX. Use TableView instead of a JTable.
+ * Managed Grid rework for JavaFX.
  * Using a fucked SwingPanel
+ * TODO: operations on the swing component should be done on Swing thread or on the Event dispatch thread
  */
 public class MangedGridFX {
     @FXML
@@ -55,9 +54,7 @@ public class MangedGridFX {
                 }
             });
             SwingFX.setContent(gridtable);
-            SwingFX.resize(1000,1000);
             SwingFX.autosize();
-            SwingFX.setVisible(true);
             SwingFX.setVisible(true);
             SwingFX.setOpacity(1.0);
             Gridable defaulting = new GriddableCreator("Flora", "foresta", Color.GREEN, false).get();
@@ -65,7 +62,8 @@ public class MangedGridFX {
             Stage Sta = new Stage();
             Sta.setScene(Grid);
             Sta.show();
-        }
+            UIManager.getInstance().setGridScene(Grid);
+       }
         catch (IOException e) {
             e.printStackTrace();
         }

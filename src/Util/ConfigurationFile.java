@@ -2,6 +2,8 @@ package Util;
 
 import Daemon.GriddableCreator;
 import Gridder.Gridable;
+import Resource.UIManager;
+
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,7 +21,7 @@ import java.util.stream.Stream;
 
 /**
  * Created by Lorenzo on 25/04/2015.
- * TODO More option for Default Gridable. Add it to the Gridable TableView
+ * TODO More option for Default Gridable. Add it to the Gridable TableView. Control the creation of the Gridable when loaded and saved
  */
 public class ConfigurationFile {
     private int numberGridRow;
@@ -44,6 +46,7 @@ public class ConfigurationFile {
         this.colorDefault = Color.RED;
         GriddableCreator gridableCreat = new GriddableCreator("Flora", "Base" , javafx.scene.paint.Color.rgb(colorDefault.getRed() , colorDefault.getGreen(), colorDefault.getBlue(), colorDefault.getAlpha()/255.0), false);
         this.gridabled = gridableCreat.get();
+        UIManager.getInstance().getTable().addRow(gridableCreat);
         this.Locale = null;
     }
 
