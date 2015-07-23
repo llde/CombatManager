@@ -1,30 +1,28 @@
 package Charcacter;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.StringProperty;
-import javafx.scene.paint.Color;
+import java.awt.*;
+import java.io.Serializable;
 
 
 /**
  * Created by Lorenzo on 22/04/2015.
  */
-public class Fauna implements Character{
-    private StringProperty nome;
-    private BooleanProperty block;
-    private BooleanProperty uniqness;
-    private ObjectProperty<Color> colore;
+public class Fauna implements Character,Serializable{
+    private String nome;
+    private Boolean block;
+    private Boolean uniqness;
+    private Color colore;
 
 
 
-    public Fauna(StringProperty nome, ObjectProperty<Color>  colore, BooleanProperty uniq){
+    public Fauna(String nome, Color  colore, Boolean uniq){
         this.nome = nome;
         this.colore = colore;
         this.uniqness = uniq;
     }
 
     @Override
-    public ObjectProperty<Color> getColor() {
+    public Color getColor() {
         return this.colore;
     }
 
@@ -34,6 +32,6 @@ public class Fauna implements Character{
     }
 
     @Override
-    public BooleanProperty IsUnique(){return uniqness;}
+    public Boolean IsUnique(){return uniqness;}
 
 }

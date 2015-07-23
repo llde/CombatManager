@@ -1,17 +1,17 @@
 package Gridder;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.scene.paint.Color;
+
+import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by Lorenzo on 25/04/2015.
  * Interfaccia sperimentale per gli oggetti visualizzabili nella grid.
  * Ogni oggetto visualizzabile nella ManagedGrid deve implementare questa interfaccia, o una delle sue sotto-interfacce.
  */
-public interface Gridable {
+public interface Gridable extends Serializable{
 
-    ObjectProperty<Color> getColor();
+    Color getColor();
 
   //  Icon getIcon();
 
@@ -21,5 +21,5 @@ public interface Gridable {
   //  void setIcon();
 
 
-    BooleanProperty IsUnique();
+    Boolean IsUnique();
 }

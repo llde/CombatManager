@@ -10,13 +10,15 @@ import Gridder.ManageableTypes;
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Lorenzo on 27/04/2015.
  * MiddleEnd Object.
  * TODO More robust check during creation.
  */
-public class GriddableCreator {
+public class GriddableCreator{
     private Gridable    Ogg;
     private StringProperty nome;
     private BooleanProperty univoco;
@@ -31,19 +33,19 @@ public class GriddableCreator {
         this.univoco = new SimpleBooleanProperty((Boolean)inf[3]);
         this.Type = new SimpleObjectProperty<ManageableTypes>(ManageableTypes.valueOf(String.valueOf(inf[0]).toUpperCase()));
         if(this.Tipo == ManageableTypes.FLORA) {
-            this.Ogg = new Flora(nome,colore,univoco);
+            this.Ogg = new Flora(nome.get(),Deamon.tranformColor(colore.get()), univoco.get());
         }
         if(this.Tipo == ManageableTypes.OBJECT) {
-            this.Ogg = new Obj(nome,colore,univoco);
+            this.Ogg = new Obj(nome.get(),Deamon.tranformColor(colore.get()),univoco.get());
         }
         if(this.Tipo == ManageableTypes.FAUNA) {
-            this.Ogg = new Fauna(nome,colore,univoco);
+            this.Ogg = new Fauna(nome.get(),Deamon.tranformColor(colore.get()),univoco.get());
         }
         if(this.Tipo == ManageableTypes.PG) {
-            this.Ogg = new PG(nome,colore,univoco);
+            this.Ogg = new PG(nome.get(),Deamon.tranformColor(colore.get()),univoco.get());
         }
         if(this.Tipo == ManageableTypes.NPC) {
-            this.Ogg = new NPC(nome,colore,univoco);
+            this.Ogg = new NPC(nome.get(),Deamon.tranformColor(colore.get()),univoco.get());
         }
     }
 

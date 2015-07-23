@@ -29,12 +29,14 @@ public class MangedGridFX {
     @FXML
     private SwingNode SwingFX;
 
+    private JTable gridtable;
+
     public MangedGridFX() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resource/GridGUI.fxml"));
         loader.setController(this);
         try {
             ScrollPane scp = loader.load();
-            JTable gridtable = new JTable(new ManagedGridResource.ManagedGridTable());
+            gridtable = new JTable(new ManagedGridResource.ManagedGridTable());
             gridtable.setDefaultRenderer(Object.class , new ManagedGridResource.GridCellRender());
             for (int index = 0; index < gridtable.getColumnCount(); index++) {
                 TableColumn colonna = gridtable.getColumnModel().getColumn(index);
@@ -69,8 +71,7 @@ public class MangedGridFX {
         }
     }
 
-
-    public ObservableList<ObservableList<Gridable>>  obtainGrid(){
-        return null;
+    public Gridable[][] obtainGrid(){
+        return ((ManagedGridResource.ManagedGridTable)gridtable.getModel()).getData();
     }
 }

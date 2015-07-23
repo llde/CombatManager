@@ -8,6 +8,7 @@ import CreateElement.TableViewer;
 import Grid.MangedGridFX;
 import Resource.UIManager;
 import Util.ConfigurationFile;
+import Util.SaveFile;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -30,7 +31,10 @@ public class Main extends Application {
 //This fields are assigned by the compiler with the FXML notation
     @FXML
     private Button  NEW;
-
+    @FXML
+    private Button LOAD;
+    @FXML
+    private Button SAVE;
 
     private static void iniz(String[] args){
         launch(args);
@@ -73,7 +77,8 @@ public class Main extends Application {
         MangedGridFX Grid = new MangedGridFX();
         TableViewer view = new TableViewer();
         primaryStage.setScene(UIMAN.getMainScene());
-        UIMAN.setTable(view)
+        UIMAN.setTable(view);
+        UIMAN.setGrid(Grid);
         UIMAN.setMainStage(primaryStage);
         UIMAN.getMainStage().show();
     }
@@ -85,7 +90,7 @@ public class Main extends Application {
         try {
             ButtonBar ancora = loader.load();
             this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
-
+            this.SAVE.setOnAction(event -> SaveFile.SaveProject("test"));
             return new Scene(ancora);
         } catch (IOException e) {
             e.printStackTrace();

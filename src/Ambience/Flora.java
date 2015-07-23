@@ -1,20 +1,19 @@
 package Ambience;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.StringProperty;
-import javafx.scene.paint.Color;
+
+import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by Lorenzo on 22/04/2015.
  */
-public class Flora implements  Ambience{
-    private StringProperty nome;
-    private BooleanProperty uniqness;
-    private ObjectProperty<Color> colore;
+public class Flora implements  Ambience, Serializable{
+    private String nome;
+    private Boolean uniqness;
+    private Color colore;
 
 
-    public Flora(StringProperty nome, ObjectProperty<Color>  colore, BooleanProperty uniq){
+    public Flora(String nome, Color colore, Boolean uniq){
         this.nome = nome;
         this.colore = colore;
         this.uniqness = uniq;
@@ -32,12 +31,12 @@ public class Flora implements  Ambience{
     }
 
     @Override
-    public StringProperty TerrainType() {
+    public String TerrainType() {
         return this.nome;
     }
 
     @Override
-    public ObjectProperty<Color> getColor() {
+    public Color getColor() {
         return this.colore;
     }
 
@@ -48,10 +47,10 @@ public class Flora implements  Ambience{
 
 
     @Override
-    public BooleanProperty IsUnique(){return uniqness;}
+    public Boolean IsUnique(){return uniqness;}
 
     @Override
     public String toString(){
-        return TerrainType().get() + ", " + getColor().get() + ", " + IsUnique().get();
+        return TerrainType() + ", " + getColor() + ", " + IsUnique();
     }
 }

@@ -32,6 +32,7 @@ public class ConfigurationFile {
     private String Locale;
     private boolean allowNullify;
     private transient Color colorDefault;
+    private transient GriddableCreator gridabledCreator;
     private Gridable gridabled;
 
     private  static ConfigurationFile istanza = null;
@@ -44,10 +45,10 @@ public class ConfigurationFile {
         this.xLenghtBlock = 10;
         this.yLenghtBlock = 10;
         this.colorDefault = Color.RED;
-        GriddableCreator gridableCreat = new GriddableCreator("Flora", "Base" , javafx.scene.paint.Color.rgb(colorDefault.getRed() , colorDefault.getGreen(), colorDefault.getBlue(), colorDefault.getAlpha()/255.0), false);
-        this.gridabled = gridableCreat.get();
-        UIManager.getInstance().getTable().addRow(gridableCreat);
+        this.gridabledCreator = new GriddableCreator("Flora", "Base" , javafx.scene.paint.Color.rgb(colorDefault.getRed() , colorDefault.getGreen(), colorDefault.getBlue(), colorDefault.getAlpha()/255.0), false);
+        this.gridabled = gridabledCreator.get();
         this.Locale = null;
+
     }
 
     public static ConfigurationFile GetConfig(){
@@ -83,6 +84,14 @@ public class ConfigurationFile {
 
     public String getLocale() {
         return Locale;
+    }
+
+    public GriddableCreator getGridabledCreator() {
+        return gridabledCreator;
+    }
+
+    public void setGridabledCreator(GriddableCreator gridabledCreator) {
+        this.gridabledCreator = gridabledCreator;
     }
 
     public void setLocale(String locale) {

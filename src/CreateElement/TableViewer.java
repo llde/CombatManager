@@ -4,6 +4,7 @@ import Daemon.GriddableCreator;
 import Daemon.Holder;
 import Gridder.ManageableTypes;
 import Resource.UIManager;
+import Util.ConfigurationFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -128,6 +129,7 @@ public class TableViewer{
             Grid.setScene(scena);
             UIManager.getInstance().setTableScene(scena);
             UIManager.getInstance().setTableStage(Grid);
+            this.addRow(ConfigurationFile.GetConfig().getGridabledCreator());
             Grid.setX(200);
             Grid.show();
         } catch (Exception e) {

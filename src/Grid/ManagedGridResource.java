@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class ManagedGridResource {
     public static class  ManagedGridTable extends AbstractTableModel {
         private ConfigurationFile config = ConfigurationFile.GetConfig();
-        private Object[][] Data = new Object[config.getNumberGridRow()][config.getNumberGridColumn()];
+        private Gridable[][] Data = new Gridable[config.getNumberGridRow()][config.getNumberGridColumn()];
 
         public ManagedGridTable(){
             super();
@@ -42,13 +42,23 @@ public class ManagedGridResource {
             return Data[rowIndex][columnIndex];
         }
 
+        @Override
         public boolean isCellEditable(int row, int col) {
             return false;
         }
 
+        @Override
         public void setValueAt(Object value, int row, int col) {
-            Data[row][col] = value;
+            Data[row][col] = (Gridable)value;
             fireTableCellUpdated(row, col);
+        }
+
+        public Gridable[][] getData() {
+            return Data;
+        }
+
+        public void setData(Gridable[][] data) {
+            Data = data;
         }
     }
     public static class GridCellRender extends DefaultTableCellRenderer implements TableCellRenderer {
@@ -64,18 +74,7 @@ public class ManagedGridResource {
             Color colore = null;
             Icon icona;
             if (valueAt != null) {
-                javafx.scene.paint.Color col = val.getColor().getValue();
-                String color = "Red: " + col.toString().substring(2, 4);
-                color += " Green: " + col.toString().substring(4,6);
-                color += " Blue: " + col.toString().substring(6,8);
-                color += " Alpha: " + col.toString().substring(8,10) + " ";
-                int red = Integer.decode("0x" + col.toString().substring(2, 4));
-                int green = Integer.decode("0x" + col.toString().substring(4,6));
-                int blue = Integer.decode("0x" + col.toString().substring(6,8));
-                int alpha = Integer.decode("0x" + col.toString().substring(8,10));
-                System.out.println(red + "  " + green + "  " + blue +"   " + alpha);
-                System.out.println(color);
-                colore = new Color(red,green ,blue, alpha);
+                colore = val.getColor();
             }
             c.setBackground(colore);
             c.setForeground(colore);

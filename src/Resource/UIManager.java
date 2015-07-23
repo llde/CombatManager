@@ -1,6 +1,7 @@
 package Resource;
 
 import CreateElement.TableViewer;
+import Grid.MangedGridFX;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ public class UIManager {
     private Stage TableStage;
 
     private TableViewer table;
+    private MangedGridFX grid;
 
     private UIManager() {
         this.BuilderScene = null;
@@ -86,5 +88,9 @@ public class UIManager {
     public void setTable(TableViewer table) {
         this.table = table;
     }
+
+    public void setGrid(MangedGridFX grid) {this.grid = grid;}
+
+    public MangedGridFX getGrid(){return  this.grid;}
 
 }

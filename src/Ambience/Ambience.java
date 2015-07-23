@@ -12,7 +12,7 @@ public interface Ambience extends Gridable {
 
     int VelocityPenality();
 
-    StringProperty TerrainType();
+    String TerrainType();
 
 
 
