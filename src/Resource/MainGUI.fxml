@@ -8,6 +8,6 @@
         <Button fx:id="NEW" mnemonicParsing="false" text="New" />
         <Button fx:id="LOAD" mnemonicParsing="false" text="Load" />
         <Button fx:id="SAVE" mnemonicParsing="false" text="Save" />
-        <Button mnemonicParsing="false" text="Export" />
+        <Button fx:id="EXP" mnemonicParsing="false" text="Export" />
     </buttons>
 </ButtonBar>

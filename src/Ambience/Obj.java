@@ -8,6 +8,7 @@ import java.io.Serializable;
  * Created by Lorenzo on 22/04/2015.
  */
 public class Obj implements Ambience,Serializable{
+    private static final long serialVersionUID = 8529685098267757692L;
     private String nome;
     private Boolean block;
     private Boolean uniqness;

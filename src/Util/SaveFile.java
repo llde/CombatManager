@@ -35,4 +35,9 @@ public class SaveFile {
             e.printStackTrace();
         }
     }
+
+    public static void export(){
+        //TODO make better refactored code.
+        UIManager.getInstance().getGrid().export();
+    }
 }

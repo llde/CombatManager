@@ -8,6 +8,7 @@ import CreateElement.TableViewer;
 import Grid.MangedGridFX;
 import Resource.UIManager;
 import Util.ConfigurationFile;
+import Util.LoadFile;
 import Util.SaveFile;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -24,7 +25,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.lang.management.PlatformLoggingMXBean;
 
 
 public class Main extends Application {
@@ -35,6 +35,8 @@ public class Main extends Application {
     private Button LOAD;
     @FXML
     private Button SAVE;
+    @FXML
+    private Button EXP;
 
     private static void iniz(String[] args){
         launch(args);
@@ -91,6 +93,8 @@ public class Main extends Application {
             ButtonBar ancora = loader.load();
             this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
             this.SAVE.setOnAction(event -> SaveFile.SaveProject("test"));
+            this.LOAD.setOnAction(event -> LoadFile.loadProject("test"));
+            this.EXP.setOnAction(event -> SaveFile.export());
             return new Scene(ancora);
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,7 +10,6 @@ import java.io.Serializable;
  * Ogni oggetto visualizzabile nella ManagedGrid deve implementare questa interfaccia, o una delle sue sotto-interfacce.
  */
 public interface Gridable extends Serializable{
-
     Color getColor();
 
   //  Icon getIcon();

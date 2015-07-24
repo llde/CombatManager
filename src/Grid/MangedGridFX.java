@@ -10,14 +10,32 @@ import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
 import javax.swing.*;
+import javax.swing.JTable.PrintMode;
 import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageConsumer;
+import java.awt.image.ImageProducer;
+import java.awt.image.RenderedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.Locale;
 
 /**
  * Created by Lorenzo on 08/05/2015.
@@ -73,5 +91,21 @@ public class MangedGridFX {
 
     public Gridable[][] obtainGrid(){
         return ((ManagedGridResource.ManagedGridTable)gridtable.getModel()).getData();
+    }
+
+    public void setGrid(Gridable[][] gridd ) {
+        ((ManagedGridResource.ManagedGridTable) gridtable.getModel()).setData(gridd);
+        gridtable.repaint();
+    }
+
+    public void export() {
+        //TODO make directly the image, don't use the print.
+        try {
+            //BufferedImage img = new BufferedImage(1024,1024, BufferedImage.TYPE_INT_ARGB);
+            gridtable.print(PrintMode.FIT_WIDTH);
+          //  ImageIO.write(img, "png", new File("./grid.png"));
+        } catch (PrinterException  e) {
+            e.printStackTrace();
+        }
     }
 }
