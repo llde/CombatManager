@@ -6,6 +6,7 @@ import Gridder.Gridable;
 import Resource.UIManager;
 import Util.ConfigurationFile;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,10 +102,10 @@ public class MangedGridFX {
     public void export() {
         //TODO make directly the image, don't use the print.
         try {
-            //BufferedImage img = new BufferedImage(1024,1024, BufferedImage.TYPE_INT_ARGB);
-            gridtable.print(PrintMode.FIT_WIDTH);
-          //  ImageIO.write(img, "png", new File("./grid.png"));
-        } catch (PrinterException  e) {
+            WritableImage img = new WritableImage(1024,1024);
+            SwingFX.snapshot(null,img);
+            ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", new File("./grid.png"));
+        } catch (IOException  e) {
             e.printStackTrace();
         }
     }
