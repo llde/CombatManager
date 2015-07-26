@@ -18,14 +18,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class Main extends Application {
@@ -52,28 +55,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                event.consume();
-                Stage x = new Stage();
-                Text t1 = new Text("Do you really want to close application?");
-                ButtonBar bar = new ButtonBar(ButtonBar.BUTTON_ORDER_WINDOWS);
-                Button b1 = new Button("Yes");
-                b1.setOnAction((even) -> Platform.exit()); //   Add configuration file save methods
-                Button b2 = new Button("No");
-                b2.setOnAction((even) -> x.close());
-                ButtonBar.setButtonData(b1, ButtonBar.ButtonData.YES);
-                ButtonBar.setButtonData(b2, ButtonBar.ButtonData.NO);
-                bar.getButtons().addAll(b1,b2);
-                VBox h = new VBox(t1,bar);
-                h.setAlignment(Pos.CENTER);
-                h.setSpacing(20);
-                Scene clos = new Scene(h);
-                x.setScene(clos);
-                x.show();
-
-            }
+        primaryStage.setOnCloseRequest(event -> {
+            Alert al = new Alert(Alert.AlertType.CONFIRMATION);
+            al.setTitle("Confirm exiting");
+            al.setContentText("Are you sure to exit?");
+            Optional<ButtonType>  but = al.showAndWait();
+            if(but.get() == null) event.consume();
+            if(but.get() == ButtonType.CANCEL) event.consume();
+            if(but.get() == ButtonType.OK) Platform.exit();
         });
         UIManager UIMAN = UIManager.getInstance();
         UIMAN.setMainScene(initRes());
