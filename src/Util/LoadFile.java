@@ -24,7 +24,7 @@ public class LoadFile {
         File file = choose.showOpenDialog(UIManager.getInstance().getTableStage());
         try {
             List<SerializableGridderCreator> lst = null;
-            FileInputStream filein = new FileInputStream(file.getAbsolutePath() + ".cbman");
+            FileInputStream filein = new FileInputStream(file.getAbsolutePath());
             ObjectInputStream ios =  new ObjectInputStream(filein);
             lst = (List<SerializableGridderCreator>)ios.readObject();
             ios.close();
@@ -33,7 +33,7 @@ public class LoadFile {
             for(SerializableGridderCreator gridable: lst){
                 UIManager.getInstance().getTable().obtainTable().add(gridable.toGriddable());
             }
-            filein = new FileInputStream(file.getAbsolutePath() + "1.cbman");
+            filein = new FileInputStream(file.getAbsolutePath().substring(0, file.getAbsolutePath().length()- 6) + "1.cbman");
             ios = new ObjectInputStream(filein);
             Gridable[][] griddata = (Gridable[][]) ios.readObject();
             UIManager.getInstance().getGrid().setGrid(griddata);
