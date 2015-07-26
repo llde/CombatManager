@@ -144,4 +144,8 @@ public class TableViewer{
     public ObservableList<GriddableCreator> obtainTable(){
         return this.TableGen.getItems();
     }
+
+    public TableView<GriddableCreator>  exportTable(){
+        return TableGen;
+    }
 }

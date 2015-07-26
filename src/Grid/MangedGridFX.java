@@ -5,38 +5,18 @@ import Daemon.Holder;
 import Gridder.Gridable;
 import Resource.UIManager;
 import Util.ConfigurationFile;
-import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageOutputStream;
 import javax.swing.*;
-import javax.swing.JTable.PrintMode;
 import javax.swing.table.TableColumn;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageConsumer;
-import java.awt.image.ImageProducer;
-import java.awt.image.RenderedImage;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Locale;
 
 /**
  * Created by Lorenzo on 08/05/2015.
@@ -99,14 +79,7 @@ public class MangedGridFX {
         gridtable.repaint();
     }
 
-    public void export() {
-        //TODO make directly the image, don't use the print.
-        try {
-            WritableImage img = new WritableImage(1024,1024);
-            SwingFX.snapshot(null,img);
-            ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", new File("./grid.png"));
-        } catch (IOException  e) {
-            e.printStackTrace();
-        }
+    public SwingNode exportSwingPane() {
+        return SwingFX;
     }
 }

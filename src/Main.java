@@ -8,6 +8,7 @@ import CreateElement.TableViewer;
 import Grid.MangedGridFX;
 import Resource.UIManager;
 import Util.ConfigurationFile;
+import Util.ExportGrid;
 import Util.LoadFile;
 import Util.SaveFile;
 import javafx.application.Application;
@@ -94,7 +95,7 @@ public class Main extends Application {
             this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
             this.SAVE.setOnAction(event -> SaveFile.SaveProject("test"));
             this.LOAD.setOnAction(event -> LoadFile.loadProject("test"));
-            this.EXP.setOnAction(event -> SaveFile.export());
+            this.EXP.setOnAction(event -> ExportGrid.export());
             return new Scene(ancora);
         } catch (IOException e) {
             e.printStackTrace();

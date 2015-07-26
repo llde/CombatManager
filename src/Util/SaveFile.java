@@ -36,8 +36,4 @@ public class SaveFile {
         }
     }
 
-    public static void export(){
-        //TODO make better refactored code.
-        UIManager.getInstance().getGrid().export();
-    }
 }
