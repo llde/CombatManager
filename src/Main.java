@@ -93,8 +93,8 @@ public class Main extends Application {
         try {
             ButtonBar ancora = loader.load();
             this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
-            this.SAVE.setOnAction(event -> SaveFile.SaveProject("test"));
-            this.LOAD.setOnAction(event -> LoadFile.loadProject("test"));
+            this.SAVE.setOnAction(event -> SaveFile.SaveProject());
+            this.LOAD.setOnAction(event -> LoadFile.loadProject());
             this.EXP.setOnAction(event -> ExportGrid.export());
             return new Scene(ancora);
         } catch (IOException e) {
