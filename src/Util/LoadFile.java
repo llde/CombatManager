@@ -1,6 +1,5 @@
 package Util;
 
-import Daemon.GriddableCreator;
 import Daemon.SerializableGridderCreator;
 import Gridder.Gridable;
 import Resource.UIManager;
@@ -19,9 +18,11 @@ public class LoadFile {
     @SuppressWarnings("unchecked")
     public static void loadProject() {
         FileChooser choose = new FileChooser();
+      //  choose.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Combat Manager project",  "cbman"));
         choose.setTitle("Load the project. The associated TableGEN is automatically loaded in the same position");
         choose.setInitialDirectory(new File("./"));
         File file = choose.showOpenDialog(UIManager.getInstance().getTableStage());
+        if(file == null) return;
         try {
             List<SerializableGridderCreator> lst = null;
             FileInputStream filein = new FileInputStream(file.getAbsolutePath());

@@ -1,6 +1,5 @@
 package Grid;
 
-import Daemon.GriddableCreator;
 import Daemon.Holder;
 import Gridder.Gridable;
 import Resource.UIManager;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -58,7 +56,6 @@ public class MangedGridFX {
             SwingFX.autosize();
             SwingFX.setVisible(true);
             SwingFX.setOpacity(1.0);
-            Gridable defaulting = new GriddableCreator("Flora", "foresta", Color.GREEN, false).get();
             Scene Grid = new Scene(scp);
             Stage Sta = new Stage();
             Sta.setScene(Grid);

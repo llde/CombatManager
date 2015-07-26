@@ -2,18 +2,12 @@ package Util;
 
 import Daemon.GriddableCreator;
 import Resource.UIManager;
-import com.sun.javafx.perf.PerformanceTracker;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.embed.swing.SwingNode;
-import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooserBuilder;
-import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
-import javax.swing.plaf.metal.MetalIconFactory;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +19,9 @@ public class ExportGrid {
     public static void export(){
         FileChooser choose = new FileChooser();
         choose.setTitle("Save the Grid");
+        choose.setInitialDirectory(new File("./"));
         File file = choose.showSaveDialog(UIManager.getInstance().getMainStage());
+        if(file == null) return;
         choose.setTitle("Save the Table");
         choose.setInitialDirectory(new File(file.getParent()));
         File file1 = choose.showSaveDialog(UIManager.getInstance().getMainStage());

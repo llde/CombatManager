@@ -9,9 +9,6 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 /**
  * Created by Lorenzo on 22/04/2015.
@@ -19,9 +16,11 @@ import java.util.zip.ZipFile;
 public class SaveFile {
     public static void SaveProject(){
         FileChooser choose = new FileChooser();
+      //  choose.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Combat Manager project",  ".cbman"));
         choose.setTitle("Save the project. The associated TableGEN is automatically saved in the same position");
         choose.setInitialDirectory(new File("./"));
         File file = choose.showSaveDialog(UIManager.getInstance().getTableStage());
+        if(file == null) return;
         ObservableList<GriddableCreator> saveTable =  UIManager.getInstance().getTable().obtainTable();
         List<SerializableGridderCreator> table = new ArrayList<>();
         for(GriddableCreator el: saveTable){
