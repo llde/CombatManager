@@ -61,6 +61,7 @@ public class MangedGridFX {
             Sta.setScene(Grid);
             Sta.show();
             UIManager.getInstance().setGridScene(Grid);
+            UIManager.getInstance().setGridStage(Sta);
        }
         catch (IOException e) {
             e.printStackTrace();

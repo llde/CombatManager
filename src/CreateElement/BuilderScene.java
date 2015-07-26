@@ -49,20 +49,13 @@ public class BuilderScene  {
             Scene scen = new Scene(loaded);
             UIManager.getInstance().setBuilderScene(scen);
             TypeBox.getItems().addAll(ManageableTypes.values());
-            Abort.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
-                }
-            });
-            OK.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    GriddableCreator x = new GriddableCreator(TypeBox.getSelectionModel().getSelectedItem(), NameField.getText(), ColorBox.getValue(), UniqueCombox.isSelected());
-                    System.out.println(x.toString());
-                    UIManager.getInstance().getTable().addRow(x);
-                    UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
-                }
+            TypeBox.setValue(ManageableTypes.FLORA);
+            Abort.setOnAction(event -> UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene()));
+            OK.setOnAction(event -> {
+                GriddableCreator x = new GriddableCreator(TypeBox.getSelectionModel().getSelectedItem(), NameField.getText(), ColorBox.getValue(), UniqueCombox.isSelected());
+                System.out.println(x.toString());
+                UIManager.getInstance().getTable().addRow(x);
+                UIManager.getInstance().getTableStage().setScene(UIManager.getInstance().getTableScene());
             });
         }
         catch (IOException e){

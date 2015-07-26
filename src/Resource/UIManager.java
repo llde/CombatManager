@@ -10,13 +10,13 @@ import javafx.stage.Stage;
  */
 public class UIManager {
     private static UIManager ourInstance = new UIManager();
-    private Stage MainStage;
     private Scene MainScene;
     private Scene GridScene;
     private Scene TableScene;
     private Scene BuilderScene;
     private Stage TableStage;
-
+    private Stage MainStage;
+    private Stage GridStage;
     private TableViewer table;
     private MangedGridFX grid;
 
@@ -27,6 +27,7 @@ public class UIManager {
         this.TableScene = null;
         this.MainStage = null;
         this.TableStage = null;
+        this.GridStage = null;
     }
 
     public static UIManager getInstance() {
@@ -79,6 +80,14 @@ public class UIManager {
 
     public void setTableStage(Stage tableStage) {
         TableStage = tableStage;
+    }
+
+    public void setGridStage(Stage gridStage){
+        GridStage = gridStage;
+    }
+
+    public Stage getGridStage(){
+        return GridStage;
     }
 
     public TableViewer getTable() {

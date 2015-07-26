@@ -92,7 +92,13 @@ public class Main extends Application {
         loader.setController(this);
         try {
             ButtonBar ancora = loader.load();
-            this.NEW.setOnAction(ActionEvent -> System.out.print("New clicked "));
+            this.NEW.setOnAction(event ->{
+                UIManager man = UIManager.getInstance();
+                man.getTableStage().close();
+                man.getGridStage().close();
+                man.setGrid(new MangedGridFX());
+                man.setTable(new TableViewer());
+            });
             this.SAVE.setOnAction(event -> SaveFile.SaveProject());
             this.LOAD.setOnAction(event -> LoadFile.loadProject());
             this.EXP.setOnAction(event -> ExportGrid.export());
