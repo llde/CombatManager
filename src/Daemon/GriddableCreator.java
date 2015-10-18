@@ -10,8 +10,6 @@ import Gridder.ManageableTypes;
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
 
-import java.io.Serializable;
-
 
 /**
  * Created by Lorenzo on 27/04/2015.
@@ -29,9 +27,9 @@ public class GriddableCreator{
     public GriddableCreator(Object... inf){
         this.Tipo = ManageableTypes.valueOf(String.valueOf(inf[0]).toUpperCase());
         this.nome = new SimpleStringProperty((String)inf[1]);
-        this.colore =  new SimpleObjectProperty<Color>((Color) inf[2]);
+        this.colore =  new SimpleObjectProperty<>((Color) inf[2]);
         this.univoco = new SimpleBooleanProperty((Boolean)inf[3]);
-        this.Type = new SimpleObjectProperty<ManageableTypes>(ManageableTypes.valueOf(String.valueOf(inf[0]).toUpperCase()));
+        this.Type = new SimpleObjectProperty<>(ManageableTypes.valueOf(String.valueOf(inf[0]).toUpperCase()));
         if(this.Tipo == ManageableTypes.FLORA) {
             this.Ogg = new Flora(nome.get(),Deamon.tranformColor(colore.get()), univoco.get());
         }

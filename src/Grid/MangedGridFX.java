@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.awt.event.MouseAdapter;
@@ -34,7 +35,7 @@ public class MangedGridFX {
         try {
             ScrollPane scp = loader.load();
             gridtable = new JTable(new ManagedGridResource.ManagedGridTable());
-            gridtable.setDefaultRenderer(Object.class , new ManagedGridResource.GridCellRender());
+            gridtable.setDefaultRenderer(Object.class, new ManagedGridResource.GridCellRender());
             for (int index = 0; index < gridtable.getColumnCount(); index++) {
                 TableColumn colonna = gridtable.getColumnModel().getColumn(index);
                 //         coloqnna.setHeaderValue(null);  //Swing di merda!
@@ -49,16 +50,16 @@ public class MangedGridFX {
                     Gridable gridObj = Holder.GetHolder().getGridable();
                     int row = gridtable.rowAtPoint(e.getPoint());
                     int col = gridtable.columnAtPoint(e.getPoint());
-                    gridtable.setValueAt(gridObj,row,col);
+                    gridtable.setValueAt(gridObj, row, col);
                 }
             });
             SwingFX.setContent(gridtable);
-            SwingFX.autosize();
             SwingFX.setVisible(true);
             SwingFX.setOpacity(1.0);
             Scene Grid = new Scene(scp);
             Stage Sta = new Stage();
             Sta.setScene(Grid);
+            scp.autosize();
             Sta.show();
             UIManager.getInstance().setGridScene(Grid);
             UIManager.getInstance().setGridStage(Sta);

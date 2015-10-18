@@ -2,9 +2,8 @@ package Util;
 
 import Daemon.GriddableCreator;
 import Gridder.Gridable;
-import Resource.UIManager;
 
-import java.awt.Color;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -185,7 +184,7 @@ public class ConfigurationFile {
     }
 
     public void save(){
-        Map<String, Object > toSave = new HashMap<String, Object>();
+        Map<String, Object > toSave = new HashMap<>();
         String nomefile = "CombatManager.ini";
         java.util.List<String> tt = new ArrayList<>();
         toSave.put("GridNumberRow" , getNumberGridRow());
